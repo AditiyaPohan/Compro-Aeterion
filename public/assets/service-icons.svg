@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100" role="img" aria-label="Service icon sprite">
+  <!-- Sprite referensi ikon layanan (audit, design, marketing, IT, consulting).
+       Komponen React memakai lucide-react; sprite ini cadangan/branding. -->
+  <g fill="none" stroke="#1e5aa8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- audit / shield -->
+    <path transform="translate(20,25)" d="M25 0 L48 8 V26 C48 40 38 48 25 52 C12 48 2 40 2 26 V8 Z"/>
+    <path transform="translate(20,25)" d="M16 26 l7 7 l12 -14" stroke="#d4af37"/>
+    <!-- design / pen -->
+    <g transform="translate(120,25)">
+      <circle cx="14" cy="14" r="10"/>
+      <path d="M24 24 L46 46" stroke="#d4af37"/>
+    </g>
+    <!-- marketing / trend -->
+    <polyline transform="translate(220,30)" points="2,44 16,28 28,36 50,8" stroke="#d4af37"/>
+    <polyline transform="translate(220,30)" points="38,8 50,8 50,20"/>
+    <!-- IT / chip -->
+    <rect transform="translate(320,25)" x="10" y="10" width="32" height="32" rx="5"/>
+    <path transform="translate(320,25)" d="M20 4 v6 M32 4 v6 M20 42 v6 M32 42 v6 M4 20 h6 M4 32 h6 M42 20 h6 M42 32 h6" stroke="#d4af37"/>
+    <!-- consulting / briefcase -->
+    <rect transform="translate(420,28)" x="4" y="14" width="44" height="30" rx="5"/>
+    <path transform="translate(420,28)" d="M18 14 v-6 h16 v6" stroke="#d4af37"/>
+  </g>
+</svg>

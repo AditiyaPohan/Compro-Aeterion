@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Perspective grid">
+  <defs>
+    <pattern id="g" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 H0 V60" fill="none" stroke="#2f7de1" stroke-opacity="0.16" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="gm" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="gmask"><rect width="1200" height="1200" fill="url(#gm)"/></mask>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#g)" mask="url(#gmask)"/>
+</svg>

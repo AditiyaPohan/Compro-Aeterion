@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/* =========================================================
+   Aetherion Zynera — Design Tokens (Tailwind v4 CSS-first)
+   ========================================================= */
+@theme {
+  /* Brand palette */
+  --color-brand: #1e5aa8; /* primary blue   */
+  --color-brand-deep: #16447f;
+  --color-azure: #2f7de1; /* secondary blue */
+  --color-azure-soft: #e8f1fc;
+  --color-gold: #d4af37; /* gold accent    */
+  --color-gold-soft: #f6eccf;
+
+  /* Neutrals */
+  --color-ink: #16243d; /* headings  */
+  --color-ink-soft: #5a6b85; /* body text */
+  --color-surface: #f5f7fa; /* light gray */
+  --color-line: #e4e9f1;
+
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Container */
+  --breakpoint-3xl: 120rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Lenis menonaktifkan smooth bawaan; biar tidak dobel */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-azure);
+    color: #fff;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .container-x {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(
+      120deg,
+      var(--color-brand) 0%,
+      var(--color-azure) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(120deg, #e9c75a 0%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shadow-card {
+    box-shadow: 0 10px 30px -12px rgba(22, 36, 61, 0.12);
+  }
+
+  .shadow-card-hover {
+    box-shadow: 0 26px 60px -20px rgba(30, 90, 168, 0.32);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* ---- Depth / 3D scene helpers ---- */
+  .scene {
+    perspective: 1400px;
+    perspective-origin: 50% 45%;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .layer {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+  .glow {
+    filter: drop-shadow(0 0 28px rgba(47, 125, 225, 0.45));
+  }
+  .glow-gold {
+    filter: drop-shadow(0 0 26px rgba(212, 175, 55, 0.5));
+  }
+  .text-glow {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+}
+
+/* Float animation untuk elemen dekoratif */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+.animate-float {
+  animation: float-y 7s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float-y 11s ease-in-out infinite;
+}
+
+/* Animated gradient background (hero / contact) */
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 220% 220%;
+  animation: gradient-pan 16s ease infinite;
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.08); }
+}
+.animate-glow {
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+
+/* Slow continuous spin (orbits / rings) */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-gradient,
+  .animate-glow,
+  .animate-spin-slow {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

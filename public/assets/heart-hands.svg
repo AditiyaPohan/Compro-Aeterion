@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Hands forming a heart">
+  <defs>
+    <linearGradient id="hh-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3f8ae8"/>
+      <stop offset="100%" stop-color="#1e5aa8"/>
+    </linearGradient>
+    <linearGradient id="hh-hand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dcecff"/>
+      <stop offset="100%" stop-color="#9cc3f3"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#hh-bg)"/>
+  <!-- soft light -->
+  <circle cx="300" cy="200" r="180" fill="#ffffff" fill-opacity="0.08"/>
+  <!-- heart formed by two hands (silhouette) -->
+  <g fill="url(#hh-hand)">
+    <!-- left hand -->
+    <path d="M300 360
+             C250 300 150 250 150 175
+             C150 130 195 110 230 135
+             C255 153 270 185 300 210
+             Z"/>
+    <!-- right hand -->
+    <path d="M300 360
+             C350 300 450 250 450 175
+             C450 130 405 110 370 135
+             C345 153 330 185 300 210
+             Z"/>
+    <!-- thumbs / wrists -->
+    <path d="M150 175 C120 190 110 230 130 270 L185 245 C168 220 158 198 150 175 Z" fill-opacity="0.92"/>
+    <path d="M450 175 C480 190 490 230 470 270 L415 245 C432 220 442 198 450 175 Z" fill-opacity="0.92"/>
+  </g>
+  <!-- inner highlight -->
+  <path d="M300 330 C262 285 192 250 192 192 C192 162 222 150 246 168 C266 183 280 208 300 226"
+        fill="#ffffff" fill-opacity="0.14"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Decorative shapes">
+  <g fill="none" stroke-width="2">
+    <circle cx="80" cy="80" r="46" stroke="#2f7de1" stroke-opacity="0.4"/>
+    <rect x="240" y="60" width="90" height="90" rx="18" stroke="#d4af37" stroke-opacity="0.5"/>
+    <path d="M60 300 q60 -80 140 0 t140 0" stroke="#1e5aa8" stroke-opacity="0.35"/>
+  </g>
+  <g fill="#d4af37" fill-opacity="0.25">
+    <circle cx="320" cy="300" r="10"/>
+    <circle cx="350" cy="330" r="6"/>
+  </g>
+</svg>

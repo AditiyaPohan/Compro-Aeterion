@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 720" preserveAspectRatio="xMidYMax slice" role="img" aria-label="City skyline">
+  <defs>
+    <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bcdcff" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="#bcdcff" stop-opacity="0.35"/>
+    </linearGradient>
+    <pattern id="cwin" width="22" height="32" patternUnits="userSpaceOnUse">
+      <rect x="4" y="5" width="10" height="16" fill="#ffffff" fill-opacity="0.18"/>
+    </pattern>
+  </defs>
+  <g fill="url(#cg)">
+    <rect x="40"   y="360" width="120" height="360"/>
+    <rect x="180"  y="280" width="90"  height="440"/>
+    <rect x="290"  y="420" width="130" height="300"/>
+    <rect x="440"  y="220" width="100" height="500"/>
+    <rect x="560"  y="340" width="80"  height="380"/>
+    <rect x="660"  y="180" width="120" height="540"/>
+    <rect x="800"  y="300" width="90"  height="420"/>
+    <rect x="910"  y="240" width="110" height="480"/>
+    <rect x="1040" y="380" width="120" height="340"/>
+    <rect x="1180" y="200" width="100" height="520"/>
+    <rect x="1300" y="320" width="90"  height="400"/>
+    <rect x="1410" y="260" width="120" height="460"/>
+    <rect x="1550" y="360" width="100" height="360"/>
+    <rect x="1670" y="220" width="110" height="500"/>
+    <rect x="1800" y="340" width="90"  height="380"/>
+  </g>
+  <g>
+    <rect x="440"  y="220" width="100" height="500" fill="url(#cwin)"/>
+    <rect x="660"  y="180" width="120" height="540" fill="url(#cwin)"/>
+    <rect x="910"  y="240" width="110" height="480" fill="url(#cwin)"/>
+    <rect x="1180" y="200" width="100" height="520" fill="url(#cwin)"/>
+    <rect x="1410" y="260" width="120" height="460" fill="url(#cwin)"/>
+    <rect x="1670" y="220" width="110" height="500" fill="url(#cwin)"/>
+  </g>
+</svg>
