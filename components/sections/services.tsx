@@ -6,6 +6,7 @@ import { ShieldCheck, Palette, TrendingUp, Cpu, ArrowUpRight, type LucideIcon } 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { SERVICES } from "@/lib/data";
+import { asset } from "@/lib/asset";
 import { ParticleField } from "@/components/ui/particle-field";
 import { TiltCard } from "@/components/interactions/tilt-card";
 import { Floating } from "@/components/interactions/floating";
@@ -71,7 +72,7 @@ export function Services() {
           <div
             data-speed="0.3"
             className="layer absolute inset-0 bg-center bg-cover opacity-[0.12]"
-            style={{ backgroundImage: "url(/assets/network.svg)" }}
+            style={{ backgroundImage: `url(${asset("/assets/network.svg")})` }}
           />
           <div data-speed="0.55" className="layer bg-grid absolute inset-0 opacity-25" />
           <div

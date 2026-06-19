@@ -32,13 +32,27 @@ npm install
 npm run dev      # http://localhost:3000
 ```
 
-## Production
+## Production (static export)
+
+This project is configured for **static export** (`output: "export"` → `./out`).
 
 ```bash
 npm install
-npm run build
-npm run start
+npm run build        # outputs static site to ./out
 ```
+
+### Deploy: GitHub Pages (automatic)
+
+A GitHub Actions workflow ([.github/workflows/deploy.yml](.github/workflows/deploy.yml))
+builds and deploys to GitHub Pages on every push to `main`.
+
+One-time setup: in the repo, go to **Settings → Pages → Build and deployment →
+Source: GitHub Actions**. Live URL: `https://aditiyapohan.github.io/Compro-Aeterion/`.
+
+The build uses a base path (`NEXT_PUBLIC_BASE_PATH=/Compro-Aeterion`, set by the
+workflow) because the site is served from a sub-folder. Locally that env is
+empty, so `npm run dev` serves from the root as usual. For other hosts (Vercel,
+cPanel) leave the base path empty and serve `out/` at the domain root.
 
 ## Colors
 

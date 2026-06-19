@@ -6,6 +6,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { SITE } from "@/lib/data";
+import { asset } from "@/lib/asset";
 import { ParticleField } from "@/components/ui/particle-field";
 import { Magnetic } from "@/components/interactions/magnetic";
 
@@ -66,7 +67,7 @@ export function Contact() {
       <div
         data-speed="0.25"
         className="layer absolute inset-0 bg-center bg-cover"
-        style={{ backgroundImage: "url(/assets/contact-bg.svg)" }}
+        style={{ backgroundImage: `url(${asset("/assets/contact-bg.svg")})` }}
       />
       <div data-speed="0.5" className="layer bg-grid absolute inset-0 opacity-20" />
       <div

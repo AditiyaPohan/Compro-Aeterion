@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { SITE } from "@/lib/data";
+import { asset } from "@/lib/asset";
 import { HeroIllustration } from "@/components/ui/hero-illustration";
 import { ParticleField } from "@/components/ui/particle-field";
 import { Magnetic } from "@/components/interactions/magnetic";
@@ -86,15 +87,15 @@ export function Hero() {
         muted
         playsInline
         preload="auto"
-        poster="/assets/videos/hero-poster.webp"
+        poster={asset("/assets/videos/hero-poster.webp")}
       >
-        <source src="/assets/videos/corporate-building.mp4" type="video/mp4" />
+        <source src={asset("/assets/videos/corporate-building.mp4")} type="video/mp4" />
       </video>
       {/* Overlay hitam transparan agar teks tetap terbaca */}
       <div className="hero-overlay layer absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-brand-deep/75" />
       <div
         className="hero-city layer absolute inset-x-0 bottom-0 h-[72%] bg-bottom bg-cover bg-no-repeat opacity-60"
-        style={{ backgroundImage: "url(/assets/city.svg)" }}
+        style={{ backgroundImage: `url(${asset("/assets/city.svg")})` }}
       />
       <div className="hero-grid layer bg-grid absolute inset-0 opacity-30" />
       <div className="animate-glow pointer-events-none absolute -right-24 top-1/4 h-[28rem] w-[28rem] rounded-full bg-azure/40 blur-[130px]" />

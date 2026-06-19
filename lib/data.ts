@@ -3,6 +3,8 @@
  * Teks dibuat semirip mungkin dengan desain referensi.
  */
 
+import { asset } from "./asset";
+
 export const SITE = {
   name: "Aetherion Zynera Indonesia",
   legalName: "PT Aetherion Zynera Indonesia",
@@ -13,7 +15,7 @@ export const SITE = {
   phone: "+62 21 5000 8800",
   whatsapp: "+62 812 9000 8800",
   address: "Jakarta, Indonesia",
-  url: "https://aetherionzynera.com",
+  url: "https://aditiyapohan.github.io/Compro-Aeterion",
 } as const;
 
 export const NAV_LINKS = [
@@ -93,7 +95,7 @@ export const PROJECTS: Project[] = [
     slug: "audit-portfolio",
     category: "Audit & Assurance",
     year: "2025",
-    image: "/assets/images/services/audit-corporate-audit.webp",
+    image: asset("/assets/images/services/audit-corporate-audit.webp"),
     summary:
       "Independent financial statement audit and internal control review for a national manufacturing group.",
     description:
@@ -117,7 +119,7 @@ export const PROJECTS: Project[] = [
     slug: "branding-portfolio",
     category: "Creative & Branding",
     year: "2025",
-    image: "/assets/images/services/creative-branding-team.webp",
+    image: asset("/assets/images/services/creative-branding-team.webp"),
     summary:
       "Complete brand identity system and company profile redesign for a manufacturing brand entering new markets.",
     description:
@@ -141,7 +143,7 @@ export const PROJECTS: Project[] = [
     slug: "digital-marketing-portfolio",
     category: "Digital Marketing",
     year: "2024",
-    image: "/assets/images/services/digital-innovation.webp",
+    image: asset("/assets/images/services/digital-innovation.webp"),
     summary:
       "Performance marketing and content strategy that tripled qualified B2B leads in two quarters.",
     description:
@@ -165,7 +167,7 @@ export const PROJECTS: Project[] = [
     slug: "it-solution-portfolio",
     category: "IT Solutions",
     year: "2024",
-    image: "/assets/images/services/it-cloud-infrastructure.webp",
+    image: asset("/assets/images/services/it-cloud-infrastructure.webp"),
     summary:
       "End-to-end rebuild of internal systems with secure, scalable cloud infrastructure.",
     description:
@@ -217,7 +219,7 @@ export const TESTIMONIALS: {
 ];
 
 /* ---- Fullscreen dashboard mega-menu (overlay navigation) ---- */
-const SVC_IMG = "/assets/images/services";
+const SVC_IMG = asset("/assets/images/services");
 
 export type MegaItem = { label: string; image: string };
 export type MegaCategory = {

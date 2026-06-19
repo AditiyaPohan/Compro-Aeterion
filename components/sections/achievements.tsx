@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { ACHIEVEMENTS } from "@/lib/data";
+import { asset } from "@/lib/asset";
 import { ParticleField } from "@/components/ui/particle-field";
 import { Floating } from "@/components/interactions/floating";
 
@@ -61,7 +62,7 @@ export function Achievements() {
       <div
         data-speed="0.3"
         className="layer absolute inset-0 bg-center bg-cover opacity-[0.14]"
-        style={{ backgroundImage: "url(/assets/floating-shapes.svg)" }}
+        style={{ backgroundImage: `url(${asset("/assets/floating-shapes.svg")})` }}
       />
       <div
         data-speed="0.2"
