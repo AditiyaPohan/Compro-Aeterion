@@ -15,7 +15,7 @@ export const SITE = {
   phone: "+62 21 5000 8800",
   whatsapp: "+62 812 9000 8800",
   address: "Jakarta, Indonesia",
-  url: "https://aditiyapohan.github.io/Compro-Aeterion",
+  url: "https://compro-aeterion.vercel.app",
 } as const;
 
 export const NAV_LINKS = [

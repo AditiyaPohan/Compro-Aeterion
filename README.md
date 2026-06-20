@@ -32,27 +32,28 @@ npm install
 npm run dev      # http://localhost:3000
 ```
 
-## Production (static export)
-
-This project is configured for **static export** (`output: "export"` → `./out`).
+## Production
 
 ```bash
 npm install
-npm run build        # outputs static site to ./out
+npm run build
+npm run start        # serve the production build locally
 ```
 
-### Deploy: GitHub Pages (automatic)
+### Deploy: Vercel (recommended)
 
-A GitHub Actions workflow ([.github/workflows/deploy.yml](.github/workflows/deploy.yml))
-builds and deploys to GitHub Pages on every push to `main`.
+1. Go to [vercel.com](https://vercel.com) and sign in with GitHub.
+2. **Add New → Project → Import** the `Compro-Aeterion` repository.
+3. Keep the defaults (framework auto-detected as **Next.js**) and click **Deploy**.
 
-One-time setup: in the repo, go to **Settings → Pages → Build and deployment →
-Source: GitHub Actions**. Live URL: `https://aditiyapohan.github.io/Compro-Aeterion/`.
+Every push to `main` then deploys automatically. Vercel serves at the domain
+root, so no base path is needed. After the first deploy, update `SITE.url` in
+[`lib/data.ts`](lib/data.ts) to your real Vercel domain (or custom domain) for
+correct SEO/sitemap URLs.
 
-The build uses a base path (`NEXT_PUBLIC_BASE_PATH=/Compro-Aeterion`, set by the
-workflow) because the site is served from a sub-folder. Locally that env is
-empty, so `npm run dev` serves from the root as usual. For other hosts (Vercel,
-cPanel) leave the base path empty and serve `out/` at the domain root.
+> Note: the codebase keeps an `asset()` helper ([`lib/asset.ts`](lib/asset.ts))
+> that prefixes asset paths only when `NEXT_PUBLIC_BASE_PATH` is set (used for
+> sub-folder hosts). On Vercel it is empty, so paths resolve from the root.
 
 ## Colors
 
