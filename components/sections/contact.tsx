@@ -75,7 +75,7 @@ export function Contact() {
       <div data-speed="0.5" className="layer bg-grid absolute inset-0 opacity-20" />
       <div
         data-speed="0.2"
-        className="layer animate-glow pointer-events-none absolute left-1/4 top-10 h-80 w-80 rounded-full bg-azure/40 blur-[130px]"
+        className="layer animate-glow pointer-events-none absolute left-1/4 top-10 hidden h-80 w-80 rounded-full bg-azure/40 blur-[130px] md:block"
       />
       <div data-speed="1.3" className="layer absolute inset-0">
         <ParticleField count={20} color="bg-gold/50" />
@@ -126,7 +126,7 @@ export function Contact() {
           </div>
 
           {/* Right: glass form */}
-          <div className="contact-card preserve-3d rounded-[2rem] border border-white/15 bg-white/[0.06] p-8 shadow-2xl backdrop-blur-xl sm:p-10">
+          <div className="contact-card preserve-3d rounded-[2rem] border border-white/15 bg-white/10 p-8 shadow-2xl backdrop-blur-none sm:p-10 md:bg-white/[0.06] md:backdrop-blur-xl">
             <form onSubmit={onSubmit} className="space-y-5">
               {FIELDS.map((f) => (
                 <div key={f.name}>

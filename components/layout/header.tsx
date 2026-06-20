@@ -63,7 +63,9 @@ export function Header() {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "bg-white/90 shadow-card backdrop-blur-md" : "bg-transparent"
+        scrolled
+          ? "bg-white shadow-card md:bg-white/90 md:backdrop-blur-md"
+          : "bg-transparent"
       )}
     >
       <div className="container-x flex h-[72px] items-center justify-between">

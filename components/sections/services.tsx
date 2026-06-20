@@ -60,7 +60,7 @@ export function Services() {
           <div data-speed="0.55" className="layer bg-grid absolute inset-0 opacity-25" />
           <div
             data-speed="0.25"
-            className="layer pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-azure/30 blur-3xl"
+            className="layer pointer-events-none absolute -right-16 -top-16 hidden h-64 w-64 rounded-full bg-azure/30 blur-3xl md:block"
           />
           <div
             data-speed="1.3"
