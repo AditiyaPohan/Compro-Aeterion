@@ -85,9 +85,9 @@ export function Hero() {
       {/* Overlay gelap agar teks tetap terbaca */}
       <div className="hero-overlay layer absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-brand-deep/75" />
       <div className="hero-grid layer bg-grid absolute inset-0 opacity-30" />
-      <div className="animate-glow pointer-events-none absolute -right-24 top-1/4 h-[28rem] w-[28rem] rounded-full bg-azure/40 blur-[130px]" />
-      <div className="animate-glow pointer-events-none absolute -left-20 bottom-0 h-80 w-80 rounded-full bg-gold/20 blur-[120px]" />
-      <div className="hero-particles layer absolute inset-0">
+      <div className="animate-glow pointer-events-none absolute -right-24 top-1/4 hidden h-[28rem] w-[28rem] rounded-full bg-azure/40 blur-[130px] md:block" />
+      <div className="animate-glow pointer-events-none absolute -left-20 bottom-0 hidden h-80 w-80 rounded-full bg-gold/20 blur-[120px] md:block" />
+      <div className="hero-particles layer absolute inset-0 hidden md:block">
         <ParticleField count={24} color="bg-gold/60" />
       </div>
 
@@ -99,7 +99,7 @@ export function Hero() {
             custom={-2}
             initial="hidden"
             animate={anim}
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-white backdrop-blur"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-white backdrop-blur-none md:backdrop-blur"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
             Integrated Professional Services
