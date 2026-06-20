@@ -79,8 +79,13 @@ export function Hero() {
       <div className="hero-gradient layer absolute inset-[-15%] animate-gradient bg-[linear-gradient(125deg,#16447f_0%,#1e5aa8_40%,#2f7de1_70%,#16447f_100%)]" />
       {/* Background gedung korporat — gambar statis (ringan, tanpa video) */}
       <div
-        className="hero-media layer absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${asset("/assets/images/hero-building.webp")})` }}
+        className="hero-media layer absolute inset-0 bg-cover bg-center [background-image:var(--hero-bg-mobile)] md:[background-image:var(--hero-bg-desktop)]"
+        style={
+          {
+            "--hero-bg-mobile": `url(${asset("/assets/images/hero-building-mobile.webp")})`,
+            "--hero-bg-desktop": `url(${asset("/assets/images/hero-building.webp")})`,
+          } as React.CSSProperties
+        }
       />
       {/* Overlay gelap agar teks tetap terbaca */}
       <div className="hero-overlay layer absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-brand-deep/75" />

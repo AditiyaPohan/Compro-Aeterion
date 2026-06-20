@@ -142,7 +142,13 @@
   }
 
   .text-glow {
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+    text-shadow: none;
+  }
+
+  @media (min-width: 768px) {
+    .text-glow {
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+    }
   }
 
   .mask-fade-x {
