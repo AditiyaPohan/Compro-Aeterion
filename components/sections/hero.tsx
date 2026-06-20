@@ -57,15 +57,14 @@ export function Hero() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        // ZOOM ON SCROLL — hero di-pin, objek membesar & terbang melewati kamera
+        // ZOOM ON SCROLL — TANPA pin (pin menyisipkan spacer → CLS).
+        // Objek membesar & memudar saat hero scroll keluar.
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: root.current,
             start: "top top",
-            end: "+=120%",
+            end: "bottom top",
             scrub: 1,
-            pin: true,
-            anticipatePin: 1,
           },
         });
 

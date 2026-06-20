@@ -24,14 +24,13 @@ export function About() {
 
       // Desktop: pinned cinematic storytelling
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+        // TANPA pin (pin → spacer → CLS). Reveal di-scrub saat section lewat.
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: pin.current,
-            start: "top top",
-            end: "+=200%",
+            start: "top 80%",
+            end: "bottom 35%",
             scrub: 1,
-            pin: true,
-            anticipatePin: 1,
           },
         });
 

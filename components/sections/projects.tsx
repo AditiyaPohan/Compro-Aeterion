@@ -1,12 +1,11 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { PROJECTS } from "@/lib/data";
 import { TiltCard } from "@/components/interactions/tilt-card";
+import { Reveal } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 function ProjectCard({
   index,
@@ -57,87 +56,37 @@ function ProjectCard({
 }
 
 export function Projects() {
-  const pin = useRef<HTMLDivElement>(null);
-  const track = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
-        const distance = () =>
-          track.current!.scrollWidth - window.innerWidth + 120;
-
-        gsap.to(track.current, {
-          x: () => -distance(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: pin.current,
-            start: "top top",
-            end: () => "+=" + distance(),
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-      });
-      return () => mm.revert();
-    },
-    { scope: pin }
-  );
-
   return (
-    <section id="portfolio" className="relative overflow-hidden bg-white">
-      {/* DESKTOP — pinned horizontal */}
-      <div ref={pin} className="relative hidden h-screen lg:block">
-        <div
-          data-speed="0.4"
-          className="layer pointer-events-none absolute -left-16 top-24 h-56 w-56 rounded-full bg-azure-soft blur-3xl"
+    <section id="portfolio" className="relative overflow-hidden bg-white py-24">
+      <div className="container-x">
+        <SectionHeading
+          eyebrow="Portfolio"
+          title="Featured Projects"
+          subtitle="Empowering Business Growth Through Innovation and Technology."
         />
-        <div
-          ref={track}
-          className="flex h-full items-center gap-8 pl-[8vw] pr-[4vw] will-change-transform"
-        >
-          {/* intro panel */}
-          <div className="w-[60vw] shrink-0 lg:w-[26vw]">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure">
-              <span className="h-px w-6 bg-gold" />
-              Portfolio
-            </span>
-            <h2 className="mt-4 text-4xl font-extrabold text-brand xl:text-5xl">
-              Featured Projects
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-ink-soft">
-              Empowering Business Growth Through Innovation and Technology. Scroll
-              to explore selected work.
-            </p>
-            <div className="mt-6 flex items-center gap-2 text-sm font-medium text-azure">
-              <span>Scroll</span>
-              <span className="h-px w-12 bg-azure" />
-              <ArrowUpRight size={16} className="rotate-45" />
-            </div>
-          </div>
 
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROJECTS.map((p, i) => (
-            <ProjectCard key={p.title} index={i} title={p.title} client={p.client} slug={p.slug} image={p.image} panel />
+            <Reveal key={p.title} index={i % 4}>
+              <ProjectCard
+                index={i}
+                title={p.title}
+                client={p.client}
+                slug={p.slug}
+                image={p.image}
+              />
+            </Reveal>
           ))}
         </div>
-      </div>
 
-      {/* MOBILE — vertical stack */}
-      <div className="container-x py-20 lg:hidden">
-        <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure">
-          <span className="h-px w-6 bg-gold" />
-          Portfolio
-        </span>
-        <h2 className="mt-4 text-3xl font-extrabold text-brand">Featured Projects</h2>
-        <p className="mt-3 text-base leading-relaxed text-ink-soft">
-          Empowering Business Growth Through Innovation and Technology.
-        </p>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {PROJECTS.map((p, i) => (
-            <ProjectCard key={p.title} index={i} title={p.title} client={p.client} slug={p.slug} image={p.image} />
-          ))}
+        <div className="mt-12 text-center">
+          <Link
+            href="/portfolio"
+            className="group inline-flex items-center gap-2 rounded-full border border-line px-7 py-3.5 text-sm font-semibold text-brand transition-colors hover:bg-surface"
+          >
+            View All Projects
+            <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>
