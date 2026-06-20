@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -36,6 +36,21 @@ export function ParticleField({
       drift: 16 + rand() * 28,
     }));
   }, [count]);
+
+  // Hanya aktif di desktop & bukan reduce-motion; dipasang setelah mount supaya
+  // tidak membebani render awal (LCP) dan tidak ada di HP sama sekali.
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => {
+    if (
+      window.matchMedia(
+        "(min-width: 768px) and (prefers-reduced-motion: no-preference)"
+      ).matches
+    ) {
+      setEnabled(true);
+    }
+  }, []);
+
+  if (!enabled) return null;
 
   return (
     <div className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
@@ -39,6 +39,19 @@ export function Hero() {
   const root = useRef<HTMLElement>(null);
   const { ready } = useLoading();
   const anim = ready ? "show" : "hidden";
+
+  // Video hanya di desktop & bukan reduce-motion (di HP berat) — dimuat
+  // setelah mount supaya tidak menghambat render awal (LCP).
+  const [showVideo, setShowVideo] = useState(false);
+  useEffect(() => {
+    if (
+      window.matchMedia(
+        "(min-width: 768px) and (prefers-reduced-motion: no-preference)"
+      ).matches
+    ) {
+      setShowVideo(true);
+    }
+  }, []);
 
   useGSAP(
     () => {
@@ -79,18 +92,26 @@ export function Hero() {
     >
       {/* depth layers (digerakkan timeline zoom) */}
       <div className="hero-gradient layer absolute inset-[-15%] animate-gradient bg-[linear-gradient(125deg,#16447f_0%,#1e5aa8_40%,#2f7de1_70%,#16447f_100%)]" />
-      {/* Background video corporate building (fallback ke gradient + poster) */}
-      <video
-        className="hero-video layer absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        poster={asset("/assets/videos/hero-poster.webp")}
-      >
-        <source src={asset("/assets/videos/corporate-building.mp4")} type="video/mp4" />
-      </video>
+      {/* Background gedung korporat: poster (instan, ringan) + video di desktop */}
+      <div className="hero-video layer absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${asset("/assets/videos/hero-poster.webp")})` }}
+        />
+        {showVideo && (
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={asset("/assets/videos/hero-poster.webp")}
+          >
+            <source src={asset("/assets/videos/corporate-building.mp4")} type="video/mp4" />
+          </video>
+        )}
+      </div>
       {/* Overlay hitam transparan agar teks tetap terbaca */}
       <div className="hero-overlay layer absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-brand-deep/75" />
       <div

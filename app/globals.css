@@ -184,3 +184,14 @@
     scroll-behavior: auto;
   }
 }
+
+/* Mobile: matikan animasi kontinu yang berat (repaint terus-menerus) demi performa */
+@media (max-width: 767px) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-gradient,
+  .animate-glow,
+  .animate-spin-slow {
+    animation: none;
+  }
+}

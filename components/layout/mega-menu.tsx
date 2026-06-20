@@ -44,12 +44,19 @@ export function MegaMenu({ scrolled }: { scrolled: boolean }) {
   // Portal hanya aktif setelah mount (document tersedia di browser)
   useEffect(() => setMounted(true), []);
 
-  // Preload semua gambar preview sekali di awal → tidak ada hitch saat buka
+  // Preload gambar preview, tapi saat browser idle → tidak menghambat load awal
   useEffect(() => {
-    FLAT.forEach((img) => {
-      const i = new Image();
-      i.src = img.image;
-    });
+    const preload = () =>
+      FLAT.forEach((img) => {
+        const i = new Image();
+        i.src = img.image;
+      });
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(preload, { timeout: 4000 });
+      return () => window.cancelIdleCallback?.(id);
+    }
+    const t = window.setTimeout(preload, 3000);
+    return () => window.clearTimeout(t);
   }, []);
 
   // kunci scroll + Esc untuk menutup

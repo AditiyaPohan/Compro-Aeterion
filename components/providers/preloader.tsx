@@ -22,8 +22,12 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
 
   useGSAP(
     () => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce) {
+      // Lewati preloader di HP & saat reduce-motion → konten tampil instan
+      // (preloader adalah penyebab utama LCP lambat di mobile).
+      const skip = window.matchMedia(
+        "(max-width: 767px), (prefers-reduced-motion: reduce)"
+      ).matches;
+      if (skip) {
         gsap.set(root.current, { autoAlpha: 0, display: "none" });
         finish();
         return;
@@ -32,31 +36,32 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
       const counter = { v: 0 };
       const tl = gsap.timeline();
 
-      tl.to(".pl-brand", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" })
+      // Durasi dipangkas agar hero (LCP) cepat tampil (~1s, bukan ~3s).
+      tl.to(".pl-brand", { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" })
         .to(
           counter,
           {
             v: 100,
-            duration: 1.9,
+            duration: 0.7,
             ease: "power1.inOut",
             onUpdate: () => {
               if (num.current) num.current.textContent = String(Math.round(counter.v));
             },
           },
-          0.2
+          0.1
         )
-        .to(".pl-bar-fill", { scaleX: 1, duration: 1.9, ease: "power1.inOut" }, 0.2)
-        .to(".pl-content", { y: -24, opacity: 0, duration: 0.5, ease: "power2.in" }, ">-0.1")
+        .to(".pl-bar-fill", { scaleX: 1, duration: 0.7, ease: "power1.inOut" }, 0.1)
+        .to(".pl-content", { y: -20, opacity: 0, duration: 0.3, ease: "power2.in" }, ">-0.05")
         // tirai terangkat — hero mulai tampil & beri sinyal "ready"
         .to(
           root.current,
           {
             yPercent: -100,
-            duration: 1,
+            duration: 0.55,
             ease: "power4.inOut",
             onStart: finish,
           },
-          ">-0.15"
+          ">-0.1"
         )
         .set(root.current, { display: "none" });
     },
