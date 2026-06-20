@@ -22,15 +22,14 @@ export function About() {
     () => {
       const mm = gsap.matchMedia();
 
-      // Desktop: pinned cinematic storytelling
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        // TANPA pin (pin → spacer → CLS). Reveal di-scrub saat section lewat.
+        // PLAY ONCE saat section masuk → konten tampil penuh & tetap (UX nyaman,
+        // bukan scrub yg bikin teks setengah-muncul tergantung posisi scroll).
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: pin.current,
-            start: "top 80%",
-            end: "bottom 35%",
-            scrub: 1,
+            start: "top 70%",
+            once: true,
           },
         });
 
@@ -85,16 +84,13 @@ export function About() {
 
   return (
     <section id="about" className="relative bg-surface">
-      <div
-        ref={pin}
-        className="scene relative flex min-h-screen items-center overflow-hidden py-20"
-      >
-        {/* decorative layers */}
+      <div ref={pin} className="scene relative overflow-hidden py-24">
+        {/* decorative layers (halus, bukan kartu kosong) */}
         <div className="about-deco pointer-events-none absolute -right-24 top-1/2 hidden -translate-y-1/2 opacity-[0.06] lg:block">
           <BrandMark className="h-[36rem] w-[36rem]" />
         </div>
-        <div className="about-deco pointer-events-none absolute left-6 top-24 h-40 w-40 rounded-3xl border border-azure/20 bg-white/40" />
-        <div className="about-deco pointer-events-none absolute right-10 bottom-20 h-28 w-28 rounded-full border border-gold/40" />
+        <div className="about-deco pointer-events-none absolute left-8 top-16 hidden h-32 w-32 rounded-3xl border border-azure/15 lg:block" />
+        <div className="about-deco pointer-events-none absolute right-10 bottom-16 hidden h-24 w-24 rounded-full border border-gold/25 lg:block" />
 
         <div className="container-x relative grid items-center gap-12 lg:grid-cols-2">
           {/* Left: logo card + counters */}

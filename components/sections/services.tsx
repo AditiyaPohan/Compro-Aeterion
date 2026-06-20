@@ -25,35 +25,18 @@ export function Services() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const cards = gsap.utils.toArray<HTMLElement>(".svc-card");
-        cards.forEach((card, i) => {
-          // Emerge from depth → scrub mengikat ke posisi scroll
-          gsap.fromTo(
-            card,
-            {
-              opacity: 0,
-              y: 150,
-              z: -300,
-              scale: 0.7,
-              rotateX: 30,
-              rotateY: i % 2 ? 12 : -12,
-            },
-            {
-              opacity: 1,
-              y: 0,
-              z: 0,
-              scale: 1,
-              rotateX: 0,
-              rotateY: 0,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: card,
-                start: "top 92%",
-                end: "top 45%",
-                scrub: 1.1,
-              },
-            }
-          );
+        // Emerge from depth — PLAY ONCE dengan stagger saat grid masuk layar
+        gsap.from(".svc-card", {
+          opacity: 0,
+          y: 120,
+          z: -240,
+          scale: 0.8,
+          rotateX: 22,
+          transformOrigin: "center center",
+          stagger: 0.12,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: { trigger: root.current, start: "top 78%", once: true },
         });
       });
       return () => mm.revert();

@@ -24,19 +24,22 @@ export function Contact() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
+        // PLAY ONCE saat masuk layar
         gsap.from(".contact-head .line", {
           yPercent: 120,
           opacity: 0,
           stagger: 0.12,
+          duration: 0.9,
           ease: "power3.out",
-          scrollTrigger: { trigger: root.current, start: "top 70%", end: "top 35%", scrub: 1 },
+          scrollTrigger: { trigger: root.current, start: "top 75%", once: true },
         });
         gsap.from(".contact-card", {
-          y: 80,
+          y: 60,
           opacity: 0,
-          rotateX: 18,
+          rotateX: 14,
+          duration: 0.9,
           ease: "power2.out",
-          scrollTrigger: { trigger: root.current, start: "top 75%", end: "top 40%", scrub: 1 },
+          scrollTrigger: { trigger: root.current, start: "top 75%", once: true },
         });
       });
       return () => mm.revert();

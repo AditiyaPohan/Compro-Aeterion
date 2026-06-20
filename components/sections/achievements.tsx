@@ -16,18 +16,14 @@ export function Achievements() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // Kinetic count-up terikat scroll + naik dari bawah
+        // Count-up PLAY ONCE saat masuk layar (bukan terikat scroll)
         ACHIEVEMENTS.forEach((stat, i) => {
           const proxy = { v: 0 };
           gsap.to(proxy, {
             v: stat.value,
-            ease: "power1.out",
-            scrollTrigger: {
-              trigger: root.current,
-              start: "top 80%",
-              end: "top 30%",
-              scrub: 1,
-            },
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: { trigger: root.current, start: "top 75%", once: true },
             onUpdate: () => {
               const el = nums.current[i];
               if (el) el.textContent = String(Math.round(proxy.v));
@@ -36,16 +32,12 @@ export function Achievements() {
         });
 
         gsap.from(".stat-col", {
-          yPercent: 60,
+          yPercent: 40,
           opacity: 0,
           stagger: 0.12,
+          duration: 0.8,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: root.current,
-            start: "top 80%",
-            end: "top 40%",
-            scrub: 1,
-          },
+          scrollTrigger: { trigger: root.current, start: "top 75%", once: true },
         });
       });
       return () => mm.revert();
