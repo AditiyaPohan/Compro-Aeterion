@@ -90,30 +90,6 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    title: "Digital Marketing Portfolio",
-    client: "PT. Aetherion Zynera Indonesia",
-    accent: "azure",
-    slug: "digital-marketing-portfolio",
-    category: "Digital Marketing",
-    year: "2025",
-    image: asset("/assets/images/services/digital-innovation.webp"),
-    summary:
-      "Layanan digital marketing end-to-end dari PT. Aetherion Zynera Indonesia — Google Ads, SEO, konten media sosial, dan pengembangan website untuk pertumbuhan bisnis yang terukur.",
-    description:
-      "PT. Aetherion Zynera Indonesia menyediakan layanan digital marketing terintegrasi mulai dari pengelolaan Google Ads, optimasi SEO, pembuatan konten media sosial (300+ upload), hingga redesign website — menghasilkan CTR 10.32%, 31,753+ klik, dan 6,006+ leads untuk klien di sektor logistik nasional.",
-    scope: [
-      "Google Ads campaign management",
-      "Website redesign & SEO optimization",
-      "Social media content creation (300+ posts)",
-      "Performance analytics & reporting",
-    ],
-    results: [
-      { value: "10.32%", label: "Google Ads CTR" },
-      { value: "6,006+", label: "Leads Generated" },
-      { value: "300+", label: "Content Uploads" },
-    ],
-  },
-  {
     title: "Audit Portfolio",
     client: "Manufacturing Company",
     accent: "blue",
@@ -163,26 +139,26 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Digital Marketing Portfolio",
-    client: "Manufacturing Company",
-    accent: "blue",
+    client: "PT. Aetherion Zynera Indonesia",
+    accent: "azure",
     slug: "digital-marketing-portfolio",
     category: "Digital Marketing",
-    year: "2024",
+    year: "2025",
     image: asset("/assets/images/services/digital-innovation.webp"),
     summary:
-      "Performance marketing and content strategy that tripled qualified B2B leads in two quarters.",
+      "Layanan digital marketing end-to-end — Google Ads, SEO, konten media sosial, dan website development untuk pertumbuhan bisnis yang terukur.",
     description:
-      "We built an integrated demand-generation engine — SEO, paid campaigns, and content — backed by analytics dashboards. Continuous experimentation lifted conversion rates while lowering cost per qualified lead.",
+      "PT. Aetherion Zynera Indonesia menyediakan layanan digital marketing terintegrasi mulai dari pengelolaan Google Ads, optimasi SEO, pembuatan konten media sosial (300+ upload), hingga redesign website — menghasilkan CTR 10.32%, 31,753+ klik, dan 6,006+ leads untuk klien di sektor logistik nasional.",
     scope: [
-      "SEO & content strategy",
-      "Paid ads management",
-      "Marketing analytics dashboard",
-      "Conversion rate optimization",
+      "Google Ads campaign management",
+      "Website redesign & SEO optimization",
+      "Social media content creation (300+ posts)",
+      "Performance analytics & reporting",
     ],
     results: [
-      { value: "3x", label: "Qualified Leads" },
-      { value: "-38%", label: "Cost per Lead" },
-      { value: "2", label: "Quarters" },
+      { value: "10.32%", label: "Google Ads CTR" },
+      { value: "6,006+", label: "Leads Generated" },
+      { value: "300+", label: "Content Uploads" },
     ],
   },
   {
