@@ -38,7 +38,7 @@ const en = {
     learnMore: "Learn more",
     items: [
       {
-        title: "Audit, Assurance & Legal Compliance",
+        title: "Corporate Legal & Licensing",
         desc: "Financial Audit, Internal Audit, Tax Review, Public Accountant",
       },
       {

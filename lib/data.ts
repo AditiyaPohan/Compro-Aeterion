@@ -38,7 +38,7 @@ export type Service = {
 export const SERVICES: Service[] = [
   {
     id: "audit",
-    title: "Audit, Assurance & Legal Compliance",
+    title: "Corporate Legal & Licensing",
     desc: "Financial Audit, Internal Audit, Tax Review, Public Accountant",
     icon: "ShieldCheck",
     slug: "audit",
@@ -199,25 +199,25 @@ export const TESTIMONIALS: {
   name: string;
   role: string;
 }[] = [
-  {
-    quote:
-      "Aetherion's audit team brought a level of rigor and clarity we hadn't seen before. Their report became a roadmap for better decisions.",
-    name: "Andika Pratama",
-    role: "CFO, Nusantara Manufacturing",
-  },
-  {
-    quote:
-      "From branding to our digital campaigns, the results spoke for themselves — a 3x increase in qualified leads within two quarters.",
-    name: "Sarah Wijaya",
-    role: "Marketing Director, Lumina Retail",
-  },
-  {
-    quote:
-      "They rebuilt our internal systems end to end. Reliable, secure, and delivered exactly on schedule. A true long-term partner.",
-    name: "Reza Maulana",
-    role: "COO, Sigma Logistics",
-  },
-];
+    {
+      quote:
+        "Aetherion's audit team brought a level of rigor and clarity we hadn't seen before. Their report became a roadmap for better decisions.",
+      name: "Andika Pratama",
+      role: "CFO, Nusantara Manufacturing",
+    },
+    {
+      quote:
+        "From branding to our digital campaigns, the results spoke for themselves — a 3x increase in qualified leads within two quarters.",
+      name: "Sarah Wijaya",
+      role: "Marketing Director, Lumina Retail",
+    },
+    {
+      quote:
+        "They rebuilt our internal systems end to end. Reliable, secure, and delivered exactly on schedule. A true long-term partner.",
+      name: "Reza Maulana",
+      role: "COO, Sigma Logistics",
+    },
+  ];
 
 /* ---- Fullscreen dashboard mega-menu (overlay navigation) ---- */
 const SVC_IMG = asset("/assets/images/services");
@@ -306,7 +306,7 @@ export type ServiceDetail = {
 export const SERVICE_DETAILS: ServiceDetail[] = [
   {
     slug: "audit",
-    title: "Audit, Assurance & Legal Compliance",
+    title: "Corporate Legal & Licensing",
     tagline: "Trust built on independent, rigorous assurance",
     icon: "ShieldCheck",
     image: `${SVC_IMG}/audit-corporate-audit.webp`,
