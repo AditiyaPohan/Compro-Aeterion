@@ -266,10 +266,7 @@ export default function HanandaPage() {
                 <Reveal key={exp.company} index={i}>
                   <div className="relative grid gap-4 rounded-[1.5rem] bg-surface p-6 shadow-card sm:grid-cols-[200px_1fr] sm:gap-8 sm:p-8">
                     <div className="shrink-0">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-azure">
-                        {exp.period}
-                      </p>
-                      <p className="mt-1 text-sm font-bold text-brand">{exp.role}</p>
+                      <p className="text-sm font-bold text-brand">{exp.role}</p>
                       <p className="mt-0.5 text-xs text-ink-soft">{exp.company}</p>
                     </div>
                     <ul className="space-y-2">
