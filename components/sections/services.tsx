@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
-import { ShieldCheck, Palette, TrendingUp, Cpu, ArrowUpRight, type LucideIcon } from "lucide-react";
+import { ShieldCheck, Palette, TrendingUp, Cpu, type LucideIcon } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { SERVICES } from "@/lib/data";
@@ -88,11 +87,8 @@ export function Services() {
               return (
                 <div key={service.id} className="svc-card will-change-transform">
                   <TiltCard max={9} className="h-full">
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="group flex h-full flex-col rounded-2xl bg-white p-6 shadow-card transition-shadow duration-300 hover:shadow-card-hover"
-                    >
-                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-azure-soft text-brand transition-all duration-300 group-hover:bg-gold group-hover:text-white">
+                    <div className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-card">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-azure-soft text-brand">
                         <Icon size={24} strokeWidth={2} />
                       </span>
                       <h3 className="mt-5 text-base font-bold text-brand">
@@ -101,11 +97,7 @@ export function Services() {
                       <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
                         {item?.desc ?? service.desc}
                       </p>
-                      <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-brand transition-colors group-hover:text-azure">
-                        {t.services.learnMore}
-                        <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </span>
-                    </Link>
+                    </div>
                   </TiltCard>
                 </div>
               );
