@@ -7,16 +7,17 @@ import { ACHIEVEMENTS } from "@/lib/data";
 import { asset } from "@/lib/asset";
 import { ParticleField } from "@/components/ui/particle-field";
 import { Floating } from "@/components/interactions/floating";
+import { useLang } from "@/components/providers/lang-provider";
 
 export function Achievements() {
   const root = useRef<HTMLElement>(null);
   const nums = useRef<(HTMLSpanElement | null)[]>([]);
+  const { t } = useLang();
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // Count-up PLAY ONCE saat masuk layar (bukan terikat scroll)
         ACHIEVEMENTS.forEach((stat, i) => {
           const proxy = { v: 0 };
           gsap.to(proxy, {
@@ -73,18 +74,14 @@ export function Achievements() {
           <div key={stat.label} className="stat-col relative text-center">
             <Floating amplitude={8} duration={5 + i} delay={i * 0.3}>
               <p className="text-4xl font-extrabold text-white text-glow sm:text-5xl">
-                <span
-                  ref={(el) => {
-                    nums.current[i] = el;
-                  }}
-                >
+                <span ref={(el) => { nums.current[i] = el; }}>
                   {stat.value}
                 </span>
-                <span className="text-gold">{stat.suffix}</span>
+                <span className="text-gold">{t.achievements[i]?.suffix ?? stat.suffix}</span>
               </p>
             </Floating>
             <p className="mt-2 text-sm font-medium uppercase tracking-wider text-white/70">
-              {stat.label}
+              {t.achievements[i]?.label ?? stat.label}
             </p>
           </div>
         ))}

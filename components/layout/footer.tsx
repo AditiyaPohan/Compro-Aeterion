@@ -1,28 +1,41 @@
+"use client";
+
 import { Mail, Phone, MapPin } from "lucide-react";
 import { BrandLogo } from "@/components/ui/brand-logo";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/data";
+import { useLang } from "@/components/providers/lang-provider";
 
 export function Footer() {
+  const { t } = useLang();
+
+  const NAV_LABELS: Record<string, string> = {
+    "#home": t.nav.home,
+    "#about": t.nav.about,
+    "#services": t.nav.services,
+    "/portfolio": t.nav.portfolio,
+    "#contact": t.nav.contact,
+  };
+
   return (
     <footer className="bg-brand-deep text-white/80">
       <div className="container-x grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:pr-6">
           <BrandLogo light />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/65">
-            Integrated professional services in Audit, Design, Digital Marketing,
-            and IT Solutions for the digital era.
+            {t.footer.tagline}
           </p>
+          <p className="mt-3 text-xs text-white/40">{t.footer.founded}</p>
         </div>
 
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-            Company
+            {t.footer.company}
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="transition-colors hover:text-gold">
-                  {l.label}
+                  {NAV_LABELS[l.href] ?? l.label}
                 </a>
               </li>
             ))}
@@ -31,13 +44,13 @@ export function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-            Services
+            {t.footer.services}
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
-            {SERVICES.map((s) => (
+            {SERVICES.map((s, idx) => (
               <li key={s.id}>
                 <a href="#services" className="transition-colors hover:text-gold">
-                  {s.title}
+                  {t.services.items[idx]?.title ?? s.title}
                 </a>
               </li>
             ))}
@@ -46,7 +59,7 @@ export function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-            Contact
+            {t.footer.contact}
           </h3>
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-start gap-3">
@@ -72,7 +85,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-white/55 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {SITE.legalName}. All rights reserved.
+            © {new Date().getFullYear()} {SITE.legalName}. {t.footer.rights}
           </p>
           <p>Audit • Creative • Digital Technology</p>
         </div>

@@ -10,6 +10,7 @@ import { asset } from "@/lib/asset";
 import { ParticleField } from "@/components/ui/particle-field";
 import { TiltCard } from "@/components/interactions/tilt-card";
 import { Floating } from "@/components/interactions/floating";
+import { useLang } from "@/components/providers/lang-provider";
 
 const ICONS: Record<string, LucideIcon> = {
   ShieldCheck,
@@ -20,12 +21,12 @@ const ICONS: Record<string, LucideIcon> = {
 
 export function Services() {
   const root = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // Emerge from depth — PLAY ONCE dengan stagger saat grid masuk layar
         gsap.from(".svc-card", {
           opacity: 0,
           y: 120,
@@ -51,7 +52,6 @@ export function Services() {
           ref={root}
           className="scene relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand to-brand-deep px-6 py-20 shadow-[0_30px_80px_-30px_rgba(30,90,168,0.6)] sm:px-12"
         >
-          {/* layered moving background */}
           <div
             data-speed="0.3"
             className="layer absolute inset-0 bg-center bg-cover opacity-[0.12]"
@@ -62,34 +62,29 @@ export function Services() {
             data-speed="0.25"
             className="layer pointer-events-none absolute -right-16 -top-16 hidden h-64 w-64 rounded-full bg-azure/30 blur-3xl md:block"
           />
-          <div
-            data-speed="1.3"
-            className="layer absolute inset-0"
-          >
+          <div data-speed="1.3" className="layer absolute inset-0">
             <ParticleField count={14} color="bg-gold/50" />
           </div>
 
-          {/* heading */}
           <div className="relative mx-auto max-w-2xl text-center">
             <Floating amplitude={6} duration={6}>
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
                 <span className="h-px w-6 bg-gold" />
-                What We Do
+                {t.services.eyebrow}
               </span>
             </Floating>
             <h2 className="mt-4 text-3xl font-extrabold text-gradient-gold sm:text-4xl">
-              Zynera Core Services
+              {t.services.heading}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/75">
-              Integrated solution to help your business grow, optimize performance
-              and achieve sustainable goals.
+              {t.services.subtitle}
             </p>
           </div>
 
-          {/* cards */}
           <div className="scene relative mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICES.map((service) => {
+            {SERVICES.map((service, idx) => {
               const Icon = ICONS[service.icon] ?? ShieldCheck;
+              const item = t.services.items[idx];
               return (
                 <div key={service.id} className="svc-card will-change-transform">
                   <TiltCard max={9} className="h-full">
@@ -101,13 +96,13 @@ export function Services() {
                         <Icon size={24} strokeWidth={2} />
                       </span>
                       <h3 className="mt-5 text-base font-bold text-brand">
-                        {service.title}
+                        {item?.title ?? service.title}
                       </h3>
                       <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
-                        {service.desc}
+                        {item?.desc ?? service.desc}
                       </p>
                       <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-brand transition-colors group-hover:text-azure">
-                        Learn more
+                        {t.services.learnMore}
                         <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </span>
                     </Link>

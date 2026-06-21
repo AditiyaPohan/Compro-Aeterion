@@ -7,6 +7,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/ui/brand-logo";
 import { MegaMenu } from "@/components/layout/mega-menu";
+import { LangSwitcher } from "@/components/ui/lang-switcher";
+import { useLang } from "@/components/providers/lang-provider";
 import { NAV_LINKS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +17,15 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const onHome = pathname === "/";
+  const { t } = useLang();
+
+  const NAV_LABELS: Record<string, string> = {
+    "#home": t.nav.home,
+    "#about": t.nav.about,
+    "#services": t.nav.services,
+    "/portfolio": t.nav.portfolio,
+    "#contact": t.nav.contact,
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -23,7 +34,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Kunci scroll body saat menu mobile terbuka
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -31,8 +41,6 @@ export function Header() {
     };
   }, [open]);
 
-  // Link pintar: anchor (#…) di homepage = smooth-scroll via Lenis;
-  // di subpage diarahkan ke /#… (client nav). Link rute (/…) selalu next/link.
   const navLink = (
     href: string,
     className: string,
@@ -91,7 +99,7 @@ export function Header() {
                   scrolled ? "text-ink hover:text-brand" : "text-white/90 hover:text-white"
                 ),
                 <>
-                  {link.label}
+                  {NAV_LABELS[link.href] ?? link.label}
                   <span className="absolute -bottom-1.5 left-0 h-0.5 w-0 bg-gold transition-all duration-300 group-hover:w-full" />
                 </>
               )}
@@ -99,11 +107,13 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <LangSwitcher scrolled={scrolled} />
+
           {navLink(
             "#contact",
             "hidden rounded-full bg-gold px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-ink shadow-[0_8px_20px_-8px_rgba(212,175,55,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c79f2c] sm:inline-flex",
-            "Get Consultation"
+            t.nav.cta
           )}
 
           {/* Mobile toggle */}
@@ -138,7 +148,7 @@ export function Header() {
                   {navLink(
                     link.href,
                     "block rounded-lg px-2 py-3 text-base font-medium text-ink transition-colors hover:bg-surface hover:text-brand",
-                    link.label,
+                    NAV_LABELS[link.href] ?? link.label,
                     () => setOpen(false)
                   )}
                 </li>
@@ -147,7 +157,7 @@ export function Header() {
                 {navLink(
                   "#contact",
                   "block rounded-full bg-gold px-5 py-3 text-center text-sm font-semibold text-ink",
-                  "Get Consultation",
+                  t.nav.cta,
                   () => setOpen(false)
                 )}
               </li>

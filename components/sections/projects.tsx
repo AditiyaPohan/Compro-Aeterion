@@ -6,6 +6,7 @@ import { PROJECTS } from "@/lib/data";
 import { TiltCard } from "@/components/interactions/tilt-card";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { useLang } from "@/components/providers/lang-provider";
 
 function ProjectCard({
   index,
@@ -13,20 +14,15 @@ function ProjectCard({
   client,
   slug,
   image,
-  panel = false,
 }: {
   index: number;
   title: string;
   client: string;
   slug: string;
   image: string;
-  panel?: boolean;
 }) {
   return (
-    <TiltCard
-      max={8}
-      className={panel ? "w-[78vw] shrink-0 sm:w-[60vw] lg:w-[30vw]" : "w-full"}
-    >
+    <TiltCard max={8} className="w-full">
       <Link
         href={`/portfolio/${slug}`}
         className="group block cursor-pointer overflow-hidden rounded-[1.6rem] bg-white shadow-card transition-shadow duration-300 hover:shadow-card-hover"
@@ -56,13 +52,15 @@ function ProjectCard({
 }
 
 export function Projects() {
+  const { t } = useLang();
+
   return (
     <section id="portfolio" className="relative overflow-hidden bg-white py-24">
       <div className="container-x">
         <SectionHeading
-          eyebrow="Portfolio"
-          title="Featured Projects"
-          subtitle="Empowering Business Growth Through Innovation and Technology."
+          eyebrow={t.projects.eyebrow}
+          title={t.projects.heading}
+          subtitle={t.projects.subtitle}
         />
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -84,7 +82,7 @@ export function Projects() {
             href="/portfolio"
             className="group inline-flex items-center gap-2 rounded-full border border-line px-7 py-3.5 text-sm font-semibold text-brand transition-colors hover:bg-surface"
           >
-            View All Projects
+            {t.projects.viewAll}
             <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>

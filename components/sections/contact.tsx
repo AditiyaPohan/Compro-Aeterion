@@ -9,22 +9,17 @@ import { SITE } from "@/lib/data";
 import { asset } from "@/lib/asset";
 import { ParticleField } from "@/components/ui/particle-field";
 import { Magnetic } from "@/components/interactions/magnetic";
-
-const FIELDS = [
-  { name: "name", label: "Name", type: "text", placeholder: "Your full name" },
-  { name: "email", label: "Email", type: "email", placeholder: "you@company.com" },
-  { name: "phone", label: "Phone", type: "tel", placeholder: "+62 ..." },
-] as const;
+import { useLang } from "@/components/providers/lang-provider";
 
 export function Contact() {
   const root = useRef<HTMLElement>(null);
   const [sent, setSent] = useState(false);
+  const { t } = useLang();
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // PLAY ONCE saat masuk layar
         gsap.from(".contact-head .line", {
           yPercent: 120,
           opacity: 0,
@@ -55,9 +50,9 @@ export function Contact() {
   };
 
   const contacts = [
-    { icon: MapPin, label: "Office", value: SITE.address },
-    { icon: Phone, label: "Phone", value: SITE.phone, href: `tel:${SITE.phone}` },
-    { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
+    { icon: MapPin, label: t.contact.labels.office, value: SITE.address },
+    { icon: Phone, label: t.contact.labels.phone, value: SITE.phone, href: `tel:${SITE.phone}` },
+    { icon: Mail, label: t.contact.labels.email, value: SITE.email, href: `mailto:${SITE.email}` },
   ];
 
   return (
@@ -66,7 +61,6 @@ export function Contact() {
       ref={root}
       className="scene relative overflow-hidden bg-brand-deep py-28 text-white"
     >
-      {/* layered cinematic background */}
       <div
         data-speed="0.25"
         className="layer absolute inset-0 bg-center bg-cover"
@@ -83,29 +77,27 @@ export function Contact() {
 
       <div className="container-x relative">
         <div className="scene grid items-center gap-12 lg:grid-cols-2">
-          {/* Left: CTA copy */}
           <div>
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
               <span className="h-px w-6 bg-gold" />
-              Get in Touch
+              {t.contact.eyebrow}
             </span>
             <h2 className="contact-head mt-4 text-4xl font-extrabold leading-tight text-glow sm:text-5xl">
               <span className="block overflow-hidden">
-                <span className="line block">Let&apos;s Build Something</span>
+                <span className="line block">{t.contact.heading[0]}</span>
               </span>
               <span className="block overflow-hidden">
-                <span className="line block text-gradient-gold">Great Together</span>
+                <span className="line block text-gradient-gold">{t.contact.heading[1]}</span>
               </span>
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-white/75">
-              Tell us about your goals. Our team will get back to you within one
-              business day to explore how we can help.
+              {t.contact.subtitle}
             </p>
 
             <ul className="mt-10 space-y-5">
               {contacts.map(({ icon: Icon, label, value, href }) => (
-                <li key={label} className="flex items-center gap-4">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-gold backdrop-blur">
+                <li key={label} className="flex items-start gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 text-gold backdrop-blur">
                     <Icon size={20} />
                   </span>
                   <div>
@@ -125,10 +117,13 @@ export function Contact() {
             </ul>
           </div>
 
-          {/* Right: glass form */}
           <div className="contact-card preserve-3d rounded-[2rem] border border-white/15 bg-white/10 p-8 shadow-2xl backdrop-blur-none sm:p-10 md:bg-white/[0.06] md:backdrop-blur-xl">
             <form onSubmit={onSubmit} className="space-y-5">
-              {FIELDS.map((f) => (
+              {[
+                { name: "name", label: t.contact.fields.name, type: "text", placeholder: t.contact.fields.namePlaceholder, required: true },
+                { name: "email", label: t.contact.fields.email, type: "email", placeholder: t.contact.fields.emailPlaceholder, required: true },
+                { name: "phone", label: t.contact.fields.phone, type: "tel", placeholder: t.contact.fields.phonePlaceholder, required: false },
+              ].map((f) => (
                 <div key={f.name}>
                   <label htmlFor={f.name} className="mb-1.5 block text-sm font-medium text-white/80">
                     {f.label}
@@ -137,7 +132,7 @@ export function Contact() {
                     id={f.name}
                     name={f.name}
                     type={f.type}
-                    required={f.name !== "phone"}
+                    required={f.required}
                     placeholder={f.placeholder}
                     className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-gold focus:ring-2 focus:ring-gold/25"
                   />
@@ -145,14 +140,14 @@ export function Contact() {
               ))}
               <div>
                 <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-white/80">
-                  Message
+                  {t.contact.fields.message}
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
                   rows={4}
-                  placeholder="How can we help?"
+                  placeholder={t.contact.fields.messagePlaceholder}
                   className="w-full resize-none rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-gold focus:ring-2 focus:ring-gold/25"
                 />
               </div>
@@ -165,11 +160,11 @@ export function Contact() {
                 >
                   {sent ? (
                     <>
-                      <CheckCircle2 size={18} /> Message Sent
+                      <CheckCircle2 size={18} /> {t.contact.sent}
                     </>
                   ) : (
                     <>
-                      Send Message
+                      {t.contact.send}
                       <Send size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                     </>
                   )}

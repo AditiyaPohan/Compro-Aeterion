@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { ScrollTrigger } from "@/lib/gsap";
 import { Preloader } from "./preloader";
+import { LangProvider } from "./lang-provider";
 
 const LoadingContext = createContext<{ ready: boolean }>({ ready: false });
 export const useLoading = () => useContext(LoadingContext);
@@ -90,9 +91,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   return (
-    <LoadingContext.Provider value={{ ready }}>
-      <Preloader onComplete={() => setReady(true)} />
-      {children}
-    </LoadingContext.Provider>
+    <LangProvider>
+      <LoadingContext.Provider value={{ ready }}>
+        <Preloader onComplete={() => setReady(true)} />
+        {children}
+      </LoadingContext.Provider>
+    </LangProvider>
   );
 }

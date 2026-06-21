@@ -5,26 +5,27 @@ import { CheckCircle2 } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { BrandMark } from "@/components/ui/brand-logo";
-import { WHY_US } from "@/lib/data";
 import { Floating } from "@/components/interactions/floating";
+import { useLang } from "@/components/providers/lang-provider";
 
-const STATS = [
-  { value: 250, suffix: "+", label: "Clients" },
-  { value: 480, suffix: "+", label: "Projects" },
-  { value: 12, suffix: "+", label: "Years" },
+const STAT_VALUES = [
+  { value: 1000, suffix: "+" },
+  { value: 480, suffix: "+" },
+  { value: 2, suffix: "+" },
 ];
 
 export function About() {
   const pin = useRef<HTMLDivElement>(null);
   const counters = useRef<(HTMLSpanElement | null)[]>([]);
+  const { t } = useLang();
+
+  const STAT_LABELS = [t.about.stats.clients, t.about.stats.projects, t.about.stats.years];
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        // PLAY ONCE saat section masuk → konten tampil penuh & tetap (UX nyaman,
-        // bukan scrub yg bikin teks setengah-muncul tergantung posisi scroll).
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: pin.current,
@@ -58,8 +59,7 @@ export function About() {
           )
           .from(".about-cta", { y: 30, opacity: 0, duration: 0.8 }, 1.6);
 
-        // Kinetic counters terikat ke progres timeline
-        STATS.forEach((stat, i) => {
+        STAT_VALUES.forEach((stat, i) => {
           const proxy = { v: 0 };
           tl.to(
             proxy,
@@ -85,7 +85,6 @@ export function About() {
   return (
     <section id="about" className="relative bg-surface">
       <div ref={pin} className="scene relative overflow-hidden py-24">
-        {/* decorative layers (halus, bukan kartu kosong) */}
         <div className="about-deco pointer-events-none absolute -right-24 top-1/2 hidden -translate-y-1/2 opacity-[0.06] lg:block">
           <BrandMark className="h-[36rem] w-[36rem]" />
         </div>
@@ -109,20 +108,16 @@ export function About() {
                 </p>
                 <div className="mt-8 h-px w-full bg-line" />
                 <div className="mt-6 grid w-full grid-cols-3 gap-4">
-                  {STATS.map((s, i) => (
-                    <div key={s.label} className="text-center">
+                  {STAT_VALUES.map((s, i) => (
+                    <div key={STAT_LABELS[i]} className="text-center">
                       <p className="text-2xl font-extrabold text-brand">
-                        <span
-                          ref={(el) => {
-                            counters.current[i] = el;
-                          }}
-                        >
+                        <span ref={(el) => { counters.current[i] = el; }}>
                           {s.value}
                         </span>
                         {s.suffix}
                       </p>
                       <p className="mt-1 text-[11px] font-medium uppercase tracking-wide text-ink-soft">
-                        {s.label}
+                        {STAT_LABELS[i]}
                       </p>
                     </div>
                   ))}
@@ -135,18 +130,18 @@ export function About() {
           <div>
             <h2 className="about-head text-3xl font-extrabold leading-tight text-brand sm:text-4xl">
               <span className="block overflow-hidden">
-                <span className="line block">Why Choose Aetherion</span>
+                <span className="line block">{t.about.heading[0]}</span>
               </span>
               <span className="block overflow-hidden">
-                <span className="line block">Zynera Indonesia?</span>
+                <span className="line block">{t.about.heading[1]}</span>
               </span>
             </h2>
             <p className="mt-3 text-sm font-medium uppercase tracking-wide text-ink-soft">
-              Empowering Business Growth Through Innovation and Technology
+              {t.about.subtitle}
             </p>
 
             <ul className="mt-8 space-y-4">
-              {WHY_US.map((item) => (
+              {t.about.whyUs.map((item) => (
                 <li key={item} className="about-item flex items-center gap-3">
                   <CheckCircle2 size={22} className="shrink-0 text-gold" />
                   <span className="font-medium text-ink">{item}</span>
@@ -158,7 +153,7 @@ export function About() {
               href="#contact"
               className="about-cta mt-9 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_14px_30px_-12px_rgba(212,175,55,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c79f2c]"
             >
-              Learn More About Us
+              {t.about.cta}
             </a>
           </div>
         </div>

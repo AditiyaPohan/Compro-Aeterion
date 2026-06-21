@@ -11,10 +11,11 @@ export const SITE = {
   tagline: "Empowering Business Through Audit, Creative & Digital Technology",
   description:
     "PT Aetherion Zynera Indonesia provides integrated professional services in Audit, Design, Digital Marketing, and IT Solutions to help businesses grow, innovate, and thrive in the digital era.",
-  email: "info@aetherionzynera.com",
-  phone: "+62 21 5000 8800",
-  whatsapp: "+62 812 9000 8800",
-  address: "Jakarta, Indonesia",
+  email: "aetherionzynera@gmail.com",
+  phone: "0896-4318-6843",
+  whatsapp: "0896-4318-6843",
+  address: "Perumahan Bumi Yapemas Indah, Blok C2 No.1 RT02/RW09, Desa Sumber Jaya, Kec. Tambun Selatan, Kab. Bekasi",
+  founded: 2024,
   url: "https://compro-aeterion.vercel.app",
 } as const;
 
@@ -187,9 +188,9 @@ export const PROJECTS: Project[] = [
 ];
 
 export const ACHIEVEMENTS: { value: number; suffix: string; label: string }[] = [
-  { value: 250, suffix: "+", label: "Clients Served" },
+  { value: 1000, suffix: "+", label: "Clients Served" },
   { value: 480, suffix: "+", label: "Projects Completed" },
-  { value: 12, suffix: "+", label: "Years Experience" },
+  { value: 2, suffix: "+", label: "Years of Experience" },
   { value: 45, suffix: "+", label: "Team Members" },
 ];
 

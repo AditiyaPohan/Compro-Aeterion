@@ -1,51 +1,75 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
-import { SITE } from "@/lib/data";
 import { asset } from "@/lib/asset";
 import { HeroIllustration } from "@/components/ui/hero-illustration";
 import { ParticleField } from "@/components/ui/particle-field";
 import { Magnetic } from "@/components/interactions/magnetic";
 import { useLoading } from "@/components/providers/app-shell";
+import { useLang } from "@/components/providers/lang-provider";
 
-const lineV: Variants = {
+/* Desktop: slide up from overflow-hidden clip (cinematic) */
+const lineDesktop: Variants = {
   hidden: { y: "115%" },
   show: (i: number) => ({
     y: "0%",
-    transition: { duration: 0.95, delay: 0.1 + i * 0.12, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.9, delay: 0.08 + i * 0.1, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
+
+/* Mobile: simple fade — no y-transform, no overflow clip, no composite layer per line */
+const lineMobile: Variants = {
+  hidden: { opacity: 0 },
+  show: (i: number) => ({
+    opacity: 1,
+    transition: { duration: 0.45, delay: 0.06 + i * 0.08 },
   }),
 };
 
 const fadeV: Variants = {
-  hidden: { opacity: 0, y: 26 },
+  hidden: { opacity: 0, y: 20 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: 0.45 + i * 0.12, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
-const HEAD = [
-  { t: "Empowering Business", c: "text-gradient-gold" },
-  { t: "Through Audit, Creative", c: "text-white" },
-  { t: "& Digital Technology", c: "text-white" },
-];
+/* Mobile fade (no y movement) */
+const fadeMobileV: Variants = {
+  hidden: { opacity: 0 },
+  show: (i: number) => ({
+    opacity: 1,
+    transition: { duration: 0.45, delay: 0.25 + i * 0.08 },
+  }),
+};
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const { ready } = useLoading();
+  const { t } = useLang();
   const anim = ready ? "show" : "hidden";
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const lineV = isMobile ? lineMobile : lineDesktop;
+  const currentFadeV = isMobile ? fadeMobileV : fadeV;
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        // ZOOM ON SCROLL — TANPA pin (pin menyisipkan spacer → CLS).
-        // Objek membesar & memudar saat hero scroll keluar.
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: root.current,
@@ -75,9 +99,7 @@ export function Hero() {
       ref={root}
       className="scene relative flex h-screen items-center overflow-hidden bg-brand-deep"
     >
-      {/* depth layers (digerakkan timeline zoom) */}
       <div className="hero-gradient layer absolute inset-[-15%] animate-gradient bg-[linear-gradient(125deg,#16447f_0%,#1e5aa8_40%,#2f7de1_70%,#16447f_100%)]" />
-      {/* Background gedung korporat — gambar statis (ringan, tanpa video) */}
       <div
         className="hero-media layer absolute inset-0 bg-cover bg-center [background-image:var(--hero-bg-mobile)] md:[background-image:var(--hero-bg-desktop)]"
         style={
@@ -87,57 +109,75 @@ export function Hero() {
           } as React.CSSProperties
         }
       />
-      {/* Overlay gelap agar teks tetap terbaca */}
       <div className="hero-overlay layer absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-brand-deep/75" />
       <div className="hero-grid layer bg-grid absolute inset-0 opacity-30" />
+
+      {/* Glow blobs — desktop only, avoid GPU blur cost on mobile */}
       <div className="animate-glow pointer-events-none absolute -right-24 top-1/4 hidden h-[28rem] w-[28rem] rounded-full bg-azure/40 blur-[130px] md:block" />
       <div className="animate-glow pointer-events-none absolute -left-20 bottom-0 hidden h-80 w-80 rounded-full bg-gold/20 blur-[120px] md:block" />
+
       <div className="hero-particles layer absolute inset-0 hidden md:block">
         <ParticleField count={24} color="bg-gold/60" />
       </div>
 
       <div className="container-x relative z-10 grid items-center gap-12 lg:grid-cols-2">
-        {/* content */}
         <div>
           <motion.span
-            variants={fadeV}
+            variants={currentFadeV}
             custom={-2}
             initial="hidden"
             animate={anim}
             className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-white backdrop-blur-none md:backdrop-blur"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            Integrated Professional Services
+            {t.hero.badge}
           </motion.span>
 
           <h1 className="hero-title mt-6 origin-left text-4xl font-extrabold leading-[1.08] text-glow sm:text-5xl lg:text-[3.4rem]">
-            {HEAD.map((line, i) => (
-              <span key={line.t} className="block overflow-hidden">
-                <motion.span
-                  variants={lineV}
-                  custom={i}
-                  initial="hidden"
-                  animate={anim}
-                  className={`block ${line.c}`}
-                >
-                  {line.t}
-                </motion.span>
-              </span>
-            ))}
+            {t.hero.lines.map((line, i) => {
+              const colorClass = i === 0 ? "text-gradient-gold" : "text-white";
+              if (isMobile) {
+                return (
+                  <motion.span
+                    key={line}
+                    variants={lineV}
+                    custom={i}
+                    initial="hidden"
+                    animate={anim}
+                    className={`block ${colorClass}`}
+                  >
+                    {line}
+                  </motion.span>
+                );
+              }
+              return (
+                <span key={line} className="block overflow-hidden">
+                  <motion.span
+                    variants={lineV}
+                    custom={i}
+                    initial="hidden"
+                    animate={anim}
+                    className={`block ${colorClass}`}
+                  >
+                    {line}
+                  </motion.span>
+                </span>
+              );
+            })}
           </h1>
 
           <motion.p
-            variants={fadeV}
+            variants={currentFadeV}
             custom={1}
             initial="hidden"
             animate={anim}
             className="hero-sub mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
           >
-            {SITE.description}
+            {t.hero.description}
           </motion.p>
 
           <motion.div
-            variants={fadeV}
+            variants={currentFadeV}
             custom={2}
             initial="hidden"
             animate={anim}
@@ -148,16 +188,15 @@ export function Hero() {
                 href="#contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-ink shadow-[0_18px_40px_-14px_rgba(212,175,55,0.9)] transition-colors duration-300 hover:bg-[#c79f2c]"
               >
-                Contact Us
+                {t.hero.cta}
                 <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </Magnetic>
           </motion.div>
         </div>
 
-        {/* illustration */}
         <motion.div
-          variants={fadeV}
+          variants={currentFadeV}
           custom={1}
           initial="hidden"
           animate={anim}
