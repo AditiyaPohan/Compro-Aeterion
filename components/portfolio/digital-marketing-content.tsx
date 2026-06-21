@@ -200,8 +200,8 @@ export function DigitalMarketingContent() {
               <Reveal index={2}>
                 <p className="mt-5 leading-relaxed text-ink-soft">
                   {isEn
-                    ? <>I am a Digital Marketing Specialist focused on <strong>performance marketing</strong>, specifically in digital advertising management, website development, and funnel optimization to increase leads and conversions. With experience as a Digital Marketing Leader, Ads Specialist, and website developer, I manage campaigns from planning to data-driven evaluation.</>
-                    : <>Saya adalah Digital Marketing Specialist yang berfokus pada <strong>performance marketing</strong>, khususnya dalam pengelolaan iklan digital, pengembangan website, dan optimasi funnel untuk meningkatkan leads dan konversi. Memiliki pengalaman sebagai Digital Marketing Leader, Ads Specialist, serta terlibat dalam pengembangan website project, saya terbiasa mengelola campaign dari tahap perencanaan hingga evaluasi berbasis data.</>}
+                    ? <>Kami adalah tim Digital Marketing Specialist yang berfokus pada <strong>performance marketing</strong>, khususnya dalam pengelolaan iklan digital, pengembangan website, dan optimasi funnel untuk meningkatkan leads dan konversi bisnis secara terukur.</>
+                    : <>Kami adalah tim Digital Marketing Specialist yang berfokus pada <strong>performance marketing</strong>, khususnya dalam pengelolaan iklan digital, pengembangan website, dan optimasi funnel untuk meningkatkan leads dan konversi. Dengan pengalaman sebagai Digital Marketing Leader, Ads Specialist, serta pengembangan website project, kami terbiasa mengelola campaign dari tahap perencanaan hingga evaluasi berbasis data.</>}
                 </p>
               </Reveal>
               <Reveal index={3}>
