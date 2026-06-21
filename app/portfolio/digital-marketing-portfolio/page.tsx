@@ -122,7 +122,7 @@ export default function HanandaPage() {
                 <ChevronRight size={14} />
                 <Link href="/portfolio" className="hover:text-gold">Portfolio</Link>
                 <ChevronRight size={14} />
-                <span className="text-white">Hananda – Digital Marketing</span>
+                <span className="text-white">Digital Marketing</span>
               </nav>
             </Reveal>
 
@@ -148,19 +148,7 @@ export default function HanandaPage() {
                     bisnis secara terukur.
                   </p>
                 </Reveal>
-                <Reveal index={4}>
-                  <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/70">
-                    <span className="flex items-center gap-1.5">
-                      <Mail size={14} className="text-gold" /> whananda92@gmail.com
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Phone size={14} className="text-gold" /> +62 822-1122-5600
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Instagram size={14} className="text-gold" /> @Nandettt
-                    </span>
-                  </div>
-                </Reveal>
+
               </div>
 
               {/* Profile photo */}

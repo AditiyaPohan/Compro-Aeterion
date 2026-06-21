@@ -76,80 +76,132 @@ export const WHY_US: string[] = [
 
 export type Project = {
   title: string;
+  titleEn?: string;
   client: string;
   accent: "blue" | "azure" | "gold";
-  slug: string; // → /portfolio/{slug}
+  slug: string;
   category: string;
+  categoryEn?: string;
   year: string;
   image: string;
   summary: string;
+  summaryEn?: string;
   description: string;
+  descriptionEn?: string;
   scope: string[];
+  scopeEn?: string[];
   results: { value: string; label: string }[];
+  resultsEn?: { value: string; label: string }[];
 };
 
 export const PROJECTS: Project[] = [
   {
     title: "Audit Portfolio",
+    titleEn: "Audit Portfolio",
     client: "PT. Aetherion Zynera Indonesia",
     accent: "blue",
     slug: "audit-portfolio",
     category: "Audit & Asuransi",
+    categoryEn: "Audit & Assurance",
     year: "2025",
     image: asset("/assets/images/services/audit-corporate-audit.webp"),
     summary:
       "Membangun Kepercayaan, Memastikan Kepatuhan, Mempercepat Pertumbuhan — layanan audit, legalitas, dan kepatuhan regulasi profesional.",
+    summaryEn:
+      "Building Trust, Ensuring Compliance, Accelerating Growth — professional audit, legal, and regulatory compliance services.",
     description:
       "PT Aetherion Zynera Indonesia adalah Perusahaan Konsultan Profesional yang bergerak di bidang Legalitas Perusahaan, Audit Laporan Keuangan, Sertifikasi ISO, Perpajakan, SBU, dan SKK. Kami hadir sebagai solusi terpercaya untuk membantu perusahaan memenuhi kebutuhan perizinan, kepatuhan regulasi, dan penguatan kredibilitas bisnis melalui layanan yang cepat, profesional, dan berorientasi pada hasil.",
+    descriptionEn:
+      "PT Aetherion Zynera Indonesia is a Professional Consulting Company specializing in Corporate Legality, Financial Statement Audit, ISO Certification, Taxation, SBU, and SKK. We serve as a trusted solution to help companies meet their licensing, regulatory compliance, and business credibility needs through fast, professional, and results-oriented services.",
     scope: [
       "Legalitas & perizinan perusahaan",
       "Audit laporan keuangan independen",
       "Sertifikasi ISO, SBU & SKK",
       "Perpajakan & kepatuhan regulasi",
     ],
+    scopeEn: [
+      "Corporate legality & business licensing",
+      "Independent financial statement audit",
+      "ISO, SBU & SKK certification",
+      "Taxation & regulatory compliance",
+    ],
     results: [
       { value: "100%", label: "Kepatuhan Regulasi" },
       { value: "Cepat", label: "Proses Profesional" },
       { value: "Terpercaya", label: "Kredibilitas Bisnis" },
     ],
+    resultsEn: [
+      { value: "100%", label: "Regulatory Compliance" },
+      { value: "Fast", label: "Professional Process" },
+      { value: "Trusted", label: "Business Credibility" },
+    ],
   },
   {
     title: "Design Portfolio",
+    titleEn: "Design Portfolio",
     client: "PT. Aetherion Zynera Indonesia",
     accent: "azure",
     slug: "branding-portfolio",
     category: "Kreatif & Branding",
+    categoryEn: "Creative & Branding",
     year: "2025",
     image: asset("/assets/images/services/creative-branding-team.webp"),
     summary:
       "Sistem identitas merek lengkap dan redesign profil perusahaan — solusi kreatif yang memperkuat posisi bisnis Anda di pasar.",
+    summaryEn:
+      "Complete brand identity system and company profile redesign — creative solutions that strengthen your business position in the market.",
     description:
       "Dari logo, panduan visual, hingga company profile dan materi pemasaran yang dipoles, kami membangun brand yang terasa percaya diri dan modern. Sistem identitas baru memberikan toolkit yang konsisten dan premium kepada tim pemasaran di setiap titik sentuh.",
+    descriptionEn:
+      "From logo and visual guidelines to a polished company profile and marketing materials, we build brands that feel confident and modern. The new identity system gives marketing teams a consistent, premium toolkit across every touchpoint.",
     scope: [
       "Identitas merek & sistem logo",
       "Company profile & pitch deck",
       "Materi pemasaran & kolateral",
       "Panduan brand (brand guidelines)",
     ],
+    scopeEn: [
+      "Brand identity & logo system",
+      "Company profile & pitch deck",
+      "Marketing collateral & materials",
+      "Brand guidelines",
+    ],
     results: [
       { value: "1", label: "Sistem Brand Terpadu" },
       { value: "40+", label: "Aset Tersampaikan" },
       { value: "2x", label: "Persiapan Sales Lebih Cepat" },
     ],
+    resultsEn: [
+      { value: "1", label: "Unified Brand System" },
+      { value: "40+", label: "Assets Delivered" },
+      { value: "2x", label: "Faster Sales Prep" },
+    ],
   },
   {
     title: "Digital Marketing Portfolio",
+    titleEn: "Digital Marketing Portfolio",
     client: "PT. Aetherion Zynera Indonesia",
     accent: "azure",
     slug: "digital-marketing-portfolio",
-    category: "Digital Marketing",
+    category: "Pemasaran Digital",
+    categoryEn: "Digital Marketing",
     year: "2025",
     image: asset("/assets/images/services/digital-innovation.webp"),
     summary:
       "Layanan digital marketing end-to-end — Google Ads, SEO, konten media sosial, dan website development untuk pertumbuhan bisnis yang terukur.",
+    summaryEn:
+      "End-to-end digital marketing services — Google Ads, SEO, social media content, and website development for measurable business growth.",
     description:
       "PT. Aetherion Zynera Indonesia menyediakan layanan digital marketing terintegrasi mulai dari pengelolaan Google Ads, optimasi SEO, pembuatan konten media sosial (300+ upload), hingga redesign website — menghasilkan CTR 10.32%, 31,753+ klik, dan 6,006+ leads untuk klien di sektor logistik nasional.",
+    descriptionEn:
+      "PT. Aetherion Zynera Indonesia provides integrated digital marketing services ranging from Google Ads management, SEO optimization, social media content creation (300+ uploads), to website redesign — delivering 10.32% CTR, 31,753+ clicks, and 6,006+ leads for clients in the national logistics sector.",
     scope: [
+      "Manajemen kampanye Google Ads",
+      "Redesign website & optimasi SEO",
+      "Pembuatan konten media sosial (300+ posting)",
+      "Analitik performa & pelaporan",
+    ],
+    scopeEn: [
       "Google Ads campaign management",
       "Website redesign & SEO optimization",
       "Social media content creation (300+ posts)",
@@ -157,31 +209,53 @@ export const PROJECTS: Project[] = [
     ],
     results: [
       { value: "10.32%", label: "Google Ads CTR" },
+      { value: "6,006+", label: "Leads Dihasilkan" },
+      { value: "300+", label: "Konten Diunggah" },
+    ],
+    resultsEn: [
+      { value: "10.32%", label: "Google Ads CTR" },
       { value: "6,006+", label: "Leads Generated" },
       { value: "300+", label: "Content Uploads" },
     ],
   },
   {
     title: "IT Solution Portfolio",
+    titleEn: "IT Solution Portfolio",
     client: "PT. Aetherion Zynera Indonesia",
     accent: "azure",
     slug: "it-solution-portfolio",
     category: "Solusi IT",
+    categoryEn: "IT Solutions",
     year: "2024",
     image: asset("/assets/images/services/it-cloud-infrastructure.webp"),
     summary:
       "Modernisasi sistem internal dengan infrastruktur cloud yang aman dan skalabel — pengembangan web, ERP, SaaS, hingga keamanan siber.",
+    summaryEn:
+      "Modernizing internal systems with secure, scalable cloud infrastructure — web development, ERP, SaaS, and cybersecurity.",
     description:
       "Kami membantu bisnis bertransformasi secara digital melalui pengembangan website profesional, implementasi ERP, solusi SaaS, dan penguatan keamanan siber. Sistem yang kami bangun dirancang untuk andal, skalabel, dan terlindungi — sehingga operasional bisnis berjalan efisien dan data tetap aman.",
+    descriptionEn:
+      "We help businesses transform digitally through professional website development, ERP implementation, SaaS solutions, and cybersecurity. The systems we build are designed to be reliable, scalable, and protected — so business operations run efficiently and data remains secure.",
     scope: [
       "Pengembangan website & aplikasi web",
       "Implementasi ERP & sistem internal",
       "Solusi SaaS & otomasi workflow",
       "Keamanan siber & monitoring 24/7",
     ],
+    scopeEn: [
+      "Website & web application development",
+      "ERP implementation & internal systems",
+      "SaaS solutions & workflow automation",
+      "Cybersecurity & 24/7 monitoring",
+    ],
     results: [
       { value: "99.9%", label: "Uptime Sistem" },
       { value: "60%", label: "Efisiensi Operasional" },
+      { value: "24/7", label: "Monitoring & Support" },
+    ],
+    resultsEn: [
+      { value: "99.9%", label: "System Uptime" },
+      { value: "60%", label: "Operational Efficiency" },
       { value: "24/7", label: "Monitoring & Support" },
     ],
   },

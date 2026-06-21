@@ -16,7 +16,15 @@ export function ProjectDetailContent({
   project: Project;
   others: Project[];
 }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const isEn = lang === "en";
+
+  const title = isEn ? (project.titleEn ?? project.title) : project.title;
+  const summary = isEn ? (project.summaryEn ?? project.summary) : project.summary;
+  const description = isEn ? (project.descriptionEn ?? project.description) : project.description;
+  const scope = isEn ? (project.scopeEn ?? project.scope) : project.scope;
+  const results = isEn ? (project.resultsEn ?? project.results) : project.results;
+  const category = isEn ? (project.categoryEn ?? project.category) : project.category;
 
   return (
     <>
@@ -36,21 +44,21 @@ export function ProjectDetailContent({
                 <ChevronRight size={14} />
                 <Link href="/portfolio" className="hover:text-gold">{t.nav.portfolio}</Link>
                 <ChevronRight size={14} />
-                <span className="text-white">{project.title}</span>
+                <span className="text-white">{title}</span>
               </nav>
             </Reveal>
             <Reveal index={1}>
               <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur">
-                {project.category} · {project.year}
+                {category} · {project.year}
               </span>
             </Reveal>
             <Reveal index={2}>
               <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.1] text-glow sm:text-5xl">
-                {project.title}
+                {title}
               </h1>
             </Reveal>
             <Reveal index={3}>
-              <p className="mt-4 max-w-2xl text-lg text-white/80">{project.summary}</p>
+              <p className="mt-4 max-w-2xl text-lg text-white/80">{summary}</p>
             </Reveal>
           </div>
         </section>
@@ -58,7 +66,7 @@ export function ProjectDetailContent({
         {/* RESULTS */}
         <section className="border-b border-line bg-white py-12">
           <div className="container-x grid grid-cols-3 gap-6">
-            {project.results.map((r) => (
+            {results.map((r) => (
               <Reveal key={r.label} className="text-center">
                 <p className="text-3xl font-extrabold text-brand sm:text-4xl">{r.value}</p>
                 <p className="mt-1 text-xs font-medium uppercase tracking-wide text-ink-soft sm:text-sm">
@@ -81,13 +89,11 @@ export function ProjectDetailContent({
               </Reveal>
               <Reveal index={1}>
                 <h2 className="mt-4 text-3xl font-extrabold text-brand sm:text-4xl">
-                  {t.serviceDetail.ctaHeading === "Ready to Get Started?"
-                    ? "The challenge & outcome"
-                    : "Tantangan & Hasil"}
+                  {isEn ? "The Challenge & Outcome" : "Tantangan & Hasil"}
                 </h2>
               </Reveal>
               <Reveal index={2}>
-                <p className="mt-5 text-lg leading-relaxed text-ink-soft">{project.description}</p>
+                <p className="mt-5 text-lg leading-relaxed text-ink-soft">{description}</p>
               </Reveal>
             </div>
 
@@ -95,7 +101,7 @@ export function ProjectDetailContent({
               <div className="rounded-[2rem] bg-surface p-8 shadow-card">
                 <h3 className="text-lg font-bold text-brand">{t.portfolio.scopeLabel}</h3>
                 <ul className="mt-6 space-y-4">
-                  {project.scope.map((s) => (
+                  {scope.map((s) => (
                     <li key={s} className="flex items-start gap-3">
                       <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
                         <Check size={14} strokeWidth={3} />
