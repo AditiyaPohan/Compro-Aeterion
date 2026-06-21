@@ -199,7 +199,7 @@ export default function HanandaPage() {
               <div className="flex items-center justify-center rounded-[2rem] bg-white">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={IMG("photo2.jpg")}
+                  src={IMG("photo2.png")}
                   alt="Hananda – outdoor"
                   className="w-full object-contain"
                   style={{ mixBlendMode: "multiply" }}

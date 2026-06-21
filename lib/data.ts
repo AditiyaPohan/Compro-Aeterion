@@ -93,7 +93,7 @@ export const PROJECTS: Project[] = [
     title: "Digital Marketing Portfolio",
     client: "PT. Aetherion Zynera Indonesia",
     accent: "azure",
-    slug: "hananda",
+    slug: "digital-marketing-portfolio",
     category: "Digital Marketing",
     year: "2025",
     image: asset("/assets/images/services/digital-innovation.webp"),
