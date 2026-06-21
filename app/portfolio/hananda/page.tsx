@@ -136,12 +136,12 @@ export default function HanandaPage() {
               <div>
                 <Reveal index={1}>
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur">
-                    Digital Marketing · 2025
+                    Digital Marketing · 2024
                   </span>
                 </Reveal>
                 <Reveal index={2}>
                   <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] text-glow sm:text-5xl lg:text-[3.2rem]">
-                    Hananda Madiresta W
+                    Digital Marketing
                     <span className="mt-2 block text-2xl font-semibold text-gold sm:text-3xl">
                       Digital Marketing Specialist
                     </span>
@@ -214,12 +214,13 @@ export default function HanandaPage() {
         <section className="bg-surface py-20">
           <div className="container-x grid items-center gap-12 lg:grid-cols-2">
             <Reveal>
-              <div className="overflow-hidden rounded-[2rem] shadow-card">
+              <div className="flex items-center justify-center rounded-[2rem] bg-white">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={IMG("photo2.jpg")}
                   alt="Hananda – outdoor"
-                  className="h-full w-full object-cover"
+                  className="w-full object-contain"
+                  style={{ mixBlendMode: "multiply" }}
                   loading="lazy"
                 />
               </div>
