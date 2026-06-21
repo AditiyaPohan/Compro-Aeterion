@@ -170,19 +170,7 @@ export default function HanandaPage() {
               </div>
 
               {/* Profile photo */}
-              <Reveal index={2}>
-                <div className="hidden lg:block">
-                  <div className="relative h-64 w-52 overflow-hidden rounded-[2rem] border-2 border-white/20 shadow-2xl">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={IMG("profile.jpg")}
-                      alt="Hananda Madiresta W"
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/60 to-transparent" />
-                  </div>
-                </div>
-              </Reveal>
+
             </div>
           </div>
         </section>
