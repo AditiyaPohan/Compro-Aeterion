@@ -90,17 +90,17 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    title: "Digital Marketing – Hananda",
-    client: "PT. Perisai Cakrawala Indonesia",
+    title: "Digital Marketing Portfolio",
+    client: "PT. Aetherion Zynera Indonesia",
     accent: "azure",
     slug: "hananda",
     category: "Digital Marketing",
     year: "2025",
-    image: asset("/assets/images/portfolio/hananda/portfolio-2.jpg"),
+    image: asset("/assets/images/services/digital-innovation.webp"),
     summary:
-      "Full-funnel digital marketing campaign delivering 10.32% CTR, 31,753+ clicks, and 6,006+ leads via Google Ads for a national logistics company.",
+      "Layanan digital marketing end-to-end dari PT. Aetherion Zynera Indonesia — Google Ads, SEO, konten media sosial, dan pengembangan website untuk pertumbuhan bisnis yang terukur.",
     description:
-      "Led end-to-end digital marketing for PT. Perisai Cakrawala Indonesia (Omkirim), a logistics brand specializing in inter-city vehicle shipment across 6 major cities. Managed Google Ads, content creation (300+ uploads), SEO, and website redesign — driving sustained growth in reach, leads, and brand equity.",
+      "PT. Aetherion Zynera Indonesia menyediakan layanan digital marketing terintegrasi mulai dari pengelolaan Google Ads, optimasi SEO, pembuatan konten media sosial (300+ upload), hingga redesign website — menghasilkan CTR 10.32%, 31,753+ klik, dan 6,006+ leads untuk klien di sektor logistik nasional.",
     scope: [
       "Google Ads campaign management",
       "Website redesign & SEO optimization",

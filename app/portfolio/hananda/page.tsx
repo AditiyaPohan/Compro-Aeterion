@@ -113,12 +113,6 @@ export default function HanandaPage() {
         {/* ── HERO ── */}
         <section className="relative min-h-[70vh] overflow-hidden bg-brand-deep pt-28 pb-16 text-white">
           <div className="bg-grid pointer-events-none absolute inset-0 opacity-20" />
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ backgroundImage: `url(${IMG("portfolio-2.jpg")})` }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/80 to-transparent" />
-          <div className="animate-glow pointer-events-none absolute -right-24 top-10 hidden h-80 w-80 rounded-full bg-azure/30 blur-[120px] md:block" />
 
           <div className="container-x relative z-10">
             {/* Breadcrumb */}
