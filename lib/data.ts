@@ -90,6 +90,30 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    title: "Digital Marketing – Hananda",
+    client: "PT. Perisai Cakrawala Indonesia",
+    accent: "azure",
+    slug: "hananda",
+    category: "Digital Marketing",
+    year: "2025",
+    image: asset("/assets/images/portfolio/hananda/portfolio-2.jpg"),
+    summary:
+      "Full-funnel digital marketing campaign delivering 10.32% CTR, 31,753+ clicks, and 6,006+ leads via Google Ads for a national logistics company.",
+    description:
+      "Led end-to-end digital marketing for PT. Perisai Cakrawala Indonesia (Omkirim), a logistics brand specializing in inter-city vehicle shipment across 6 major cities. Managed Google Ads, content creation (300+ uploads), SEO, and website redesign — driving sustained growth in reach, leads, and brand equity.",
+    scope: [
+      "Google Ads campaign management",
+      "Website redesign & SEO optimization",
+      "Social media content creation (300+ posts)",
+      "Performance analytics & reporting",
+    ],
+    results: [
+      { value: "10.32%", label: "Google Ads CTR" },
+      { value: "6,006+", label: "Leads Generated" },
+      { value: "300+", label: "Content Uploads" },
+    ],
+  },
+  {
     title: "Audit Portfolio",
     client: "Manufacturing Company",
     accent: "blue",
