@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { PROJECTS, getProject, SITE } from "@/lib/data";
 import { ProjectDetailContent } from "@/components/portfolio/project-detail-content";
 
+const STATIC_ROUTES = ["digital-marketing-portfolio"];
+
 export function generateStaticParams() {
-  return PROJECTS.map((p) => ({ slug: p.slug }));
+  return PROJECTS.filter((p) => !STATIC_ROUTES.includes(p.slug)).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
