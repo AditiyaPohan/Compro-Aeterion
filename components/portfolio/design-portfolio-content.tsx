@@ -101,7 +101,7 @@ const WORKS: Work[] = [
     icon: <Trophy size={18} />,
     accent: "from-violet-600 to-brand-deep",
     cols: "columns-1 sm:columns-2",
-    images: ["rupakuy-1.jpg", "rupakuy-2.jpg", "rupakuy-3.jpg"],
+    images: ["rupakuy-1.jpg", "rupakuy-3.jpg"],
   },
   {
     id: "surya-duta",
