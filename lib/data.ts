@@ -142,80 +142,39 @@ export const PROJECTS: Project[] = [
     client: "PT. Aetherion Zynera Indonesia",
     accent: "azure",
     slug: "branding-portfolio",
-    category: "Kreatif & Branding",
-    categoryEn: "Creative & Branding",
-    year: "2025",
-    image: asset("/assets/images/services/creative-branding-team.webp"),
-    summary:
-      "Sistem identitas merek lengkap dan redesign profil perusahaan — solusi kreatif yang memperkuat posisi bisnis Anda di pasar.",
-    summaryEn:
-      "Complete brand identity system and company profile redesign — creative solutions that strengthen your business position in the market.",
-    description:
-      "Dari logo, panduan visual, hingga company profile dan materi pemasaran yang dipoles, kami membangun brand yang terasa percaya diri dan modern. Sistem identitas baru memberikan toolkit yang konsisten dan premium kepada tim pemasaran di setiap titik sentuh.",
-    descriptionEn:
-      "From logo and visual guidelines to a polished company profile and marketing materials, we build brands that feel confident and modern. The new identity system gives marketing teams a consistent, premium toolkit across every touchpoint.",
-    scope: [
-      "Identitas merek & sistem logo",
-      "Company profile & pitch deck",
-      "Materi pemasaran & kolateral",
-      "Panduan brand (brand guidelines)",
-    ],
-    scopeEn: [
-      "Brand identity & logo system",
-      "Company profile & pitch deck",
-      "Marketing collateral & materials",
-      "Brand guidelines",
-    ],
-    results: [
-      { value: "1", label: "Sistem Brand Terpadu" },
-      { value: "40+", label: "Aset Tersampaikan" },
-      { value: "2x", label: "Persiapan Sales Lebih Cepat" },
-    ],
-    resultsEn: [
-      { value: "1", label: "Unified Brand System" },
-      { value: "40+", label: "Assets Delivered" },
-      { value: "2x", label: "Faster Sales Prep" },
-    ],
-  },
-  {
-    title: "Design Portfolio",
-    titleEn: "Design Portfolio",
-    client: "PT. Aetherion Zynera Indonesia",
-    accent: "gold",
-    slug: "dkv-portfolio",
     category: "Desain Grafis & Visual",
     categoryEn: "Graphic Design & Visual",
     year: "2025",
-    image: asset("/assets/images/portfolio/dkv/img_54.png"),
+    image: asset("/assets/images/portfolio/design/argent.jpg"),
     summary:
-      "Koleksi karya desain grafis dan komunikasi visual — dari digital imaging dan foto konseptual hingga konten media sosial, iklan produk, dan desain event.",
+      "Koleksi karya desain grafis & komunikasi visual — dari digital imaging produk, foto konseptual, hingga konten media sosial, iklan, dan desain event.",
     summaryEn:
-      "A curated graphic design & visual communication portfolio — from digital imaging and conceptual photography to social media content, product advertising, and event design.",
+      "A graphic design & visual communication portfolio — from product digital imaging and conceptual photography to social media content, advertising, and event design.",
     description:
-      "Tim kreatif Aetherion menghadirkan karya visual berkualitas tinggi meliputi digital imaging, fotografi konseptual, konten skincare untuk Instagram, iklan produk, desain event esports, dan social media advertising — semua dikerjakan dengan Adobe Photoshop, Illustrator, dan InDesign.",
+      "Tim kreatif Aetherion menghadirkan karya visual berkualitas tinggi: digital imaging produk (Argent Instinct, Jahe Wangi), fotografi konseptual, konten skincare Instagram (TM Estetik), iklan produk (SoftBank), desain turnamen esports (PANTURA MLBB), serta social media advertising (Surya Duta Internasional) — dikerjakan dengan Adobe Photoshop, Illustrator, dan InDesign.",
     descriptionEn:
-      "The Aetherion creative team delivers high-quality visual works including digital imaging, conceptual photography, skincare Instagram content, product advertising, esports event design, and social media advertising — all executed with Adobe Photoshop, Illustrator, and InDesign.",
+      "The Aetherion creative team delivers high-quality visual works: product digital imaging (Argent Instinct, Jahe Wangi), conceptual photography, skincare Instagram content (TM Estetik), product advertising (SoftBank), esports tournament design (PANTURA MLBB), and social media advertising (Surya Duta Internasional) — crafted with Adobe Photoshop, Illustrator, and InDesign.",
     scope: [
-      "Digital Imaging & Manipulasi Foto",
+      "Digital Imaging & Manipulasi Produk",
+      "Fotografi Konseptual",
       "Konten Media Sosial (Feed & Story)",
-      "Iklan Produk & Visual Advertising",
-      "Desain Event & Turnamen Esports",
+      "Iklan Produk & Desain Event",
     ],
     scopeEn: [
-      "Digital Imaging & Photo Manipulation",
+      "Digital Imaging & Product Manipulation",
+      "Conceptual Photography",
       "Social Media Content (Feed & Story)",
-      "Product Advertising & Visual Ads",
-      "Event Design & Esports Tournament",
+      "Product Advertising & Event Design",
     ],
     results: [
       { value: "6+", label: "Kategori Karya" },
-      { value: "4", label: "Klien Industri" },
-      { value: "50+", label: "Aset Visual" },
+      { value: "5", label: "Brand Klien" },
+      { value: "20+", label: "Aset Visual" },
     ],
     resultsEn: [
-      { value: "6+", label: "Design Categories" },
-      { value: "4", label: "Industry Clients" },
-      { value: "50+", label: "Visual Assets" },
+      { value: "6+", label: "Work Categories" },
+      { value: "5", label: "Client Brands" },
+      { value: "20+", label: "Visual Assets" },
     ],
   },
   {
