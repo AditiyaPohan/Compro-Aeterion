@@ -28,7 +28,8 @@ type Work = {
   descEn: string;
   icon: React.ReactNode;
   accent: string;
-  images: { src: string; ratio: "portrait" | "square" | "wide" | "story" }[];
+  cols: string; // tailwind masonry column classes
+  images: string[];
 };
 
 const WORKS: Work[] = [
@@ -43,10 +44,8 @@ const WORKS: Work[] = [
     descEn: "Product compositions using digital imaging techniques — merging photography, illustration, and typography into dramatic, premium product advertising visuals.",
     icon: <Wand2 size={18} />,
     accent: "from-azure to-brand",
-    images: [
-      { src: "argent.jpg", ratio: "portrait" },
-      { src: "jahewangi.jpg", ratio: "portrait" },
-    ],
+    cols: "columns-1 sm:columns-2",
+    images: ["argent.jpg", "jahewangi.jpg"],
   },
   {
     id: "conceptual",
@@ -59,9 +58,8 @@ const WORKS: Work[] = [
     descEn: "Visual narrative exploration through concept, lighting, and styling direction — producing strong, editorial-style photographic works full of character.",
     icon: <Camera size={18} />,
     accent: "from-brand to-brand-deep",
-    images: [
-      { src: "conceptual-1.jpg", ratio: "portrait" },
-    ],
+    cols: "columns-1 sm:columns-2",
+    images: ["conceptual-2.jpg", "conceptual-1.jpg"],
   },
   {
     id: "softbank",
@@ -74,10 +72,8 @@ const WORKS: Work[] = [
     descEn: "Advertising material design for SoftBank connectivity products — informative, sales-driven visuals for home WiFi and data plan promotions.",
     icon: <Megaphone size={18} />,
     accent: "from-sky-500 to-brand-deep",
-    images: [
-      { src: "softbank-1.jpg", ratio: "square" },
-      { src: "softbank-2.jpg", ratio: "square" },
-    ],
+    cols: "columns-1 sm:columns-2",
+    images: ["softbank-1.jpg", "softbank-2.jpg"],
   },
   {
     id: "tm-estetik",
@@ -90,14 +86,8 @@ const WORKS: Work[] = [
     descEn: "Instagram feeds & story content production for TM Estetik skincare brand — covering product promotions (Sunscreen, Acne Serum), seasonal campaigns, and visually consistent educational content.",
     icon: <Sparkles size={18} />,
     accent: "from-pink-500 to-rose-600",
-    images: [
-      { src: "tm-1.jpg", ratio: "square" },
-      { src: "tm-2.jpg", ratio: "square" },
-      { src: "tm-3.jpg", ratio: "story" },
-      { src: "tm-4.jpg", ratio: "story" },
-      { src: "tm-5.jpg", ratio: "story" },
-      { src: "tm-6.jpg", ratio: "story" },
-    ],
+    cols: "columns-2 sm:columns-3",
+    images: ["tm-1.jpg", "tm-2.jpg", "tm-3.jpg", "tm-4.jpg", "tm-5.jpg", "tm-6.jpg"],
   },
   {
     id: "rupakuy",
@@ -110,11 +100,8 @@ const WORKS: Work[] = [
     descEn: "Complete visual design for the PANTURA Mobile Legends (MLBB) tournament with Rupakuy Creative Event Organizer — posters, promotional materials, and event visual assets.",
     icon: <Trophy size={18} />,
     accent: "from-violet-600 to-brand-deep",
-    images: [
-      { src: "rupakuy-1.jpg", ratio: "portrait" },
-      { src: "rupakuy-2.jpg", ratio: "portrait" },
-      { src: "rupakuy-3.jpg", ratio: "wide" },
-    ],
+    cols: "columns-1 sm:columns-2",
+    images: ["rupakuy-1.jpg", "rupakuy-2.jpg", "rupakuy-3.jpg"],
   },
   {
     id: "surya-duta",
@@ -127,23 +114,10 @@ const WORKS: Work[] = [
     descEn: "Instagram feeds & story advertising content for PT. Surya Duta Internasional aquarium products (Aqura, Recent, Wild Oscar) — clean, informative, and consistent product visuals.",
     icon: <Fish size={18} />,
     accent: "from-emerald-600 to-teal-700",
-    images: [
-      { src: "surya-1.jpg", ratio: "story" },
-      { src: "surya-2.jpg", ratio: "story" },
-      { src: "surya-3.jpg", ratio: "wide" },
-      { src: "surya-4.jpg", ratio: "wide" },
-      { src: "surya-5.jpg", ratio: "wide" },
-      { src: "surya-6.jpg", ratio: "wide" },
-    ],
+    cols: "columns-1 sm:columns-2",
+    images: ["surya-1.jpg", "surya-2.jpg", "surya-3.jpg", "surya-4.jpg", "surya-5.jpg", "surya-6.jpg"],
   },
 ];
-
-const RATIO_CLASS: Record<string, string> = {
-  portrait: "aspect-[4/5]",
-  square: "aspect-square",
-  story: "aspect-[9/16]",
-  wide: "aspect-[16/10]",
-};
 
 export function DesignPortfolioContent() {
   const { t, lang } = useLang();
@@ -316,27 +290,21 @@ export function DesignPortfolioContent() {
                   <p className="mt-5 max-w-2xl leading-relaxed text-ink-soft">{desc}</p>
                 </Reveal>
 
-                <div className={`mt-10 grid gap-5 ${
-                  work.images.length <= 2
-                    ? "grid-cols-1 sm:grid-cols-2"
-                    : work.images[0].ratio === "story"
-                    ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
-                    : work.images[0].ratio === "wide"
-                    ? "grid-cols-1 sm:grid-cols-2"
-                    : "grid-cols-2 sm:grid-cols-3"
-                }`}>
-                  {work.images.map((im, i) => (
-                    <Reveal key={im.src} index={i % 3}>
-                      <div className={`group overflow-hidden rounded-2xl bg-surface shadow-card ${RATIO_CLASS[im.ratio]}`}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={IMG(im.src)}
-                          alt={`${title} — ${i + 1}`}
-                          loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </Reveal>
+                <div className={`mt-10 gap-5 ${work.cols} [column-fill:_balance]`}>
+                  {work.images.map((src, i) => (
+                    <div key={src} className="mb-5 break-inside-avoid">
+                      <Reveal index={i % 3}>
+                        <div className="group overflow-hidden rounded-2xl bg-surface shadow-card">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={IMG(src)}
+                            alt={`${title} — ${i + 1}`}
+                            loading="lazy"
+                            className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
+                          />
+                        </div>
+                      </Reveal>
+                    </div>
                   ))}
                 </div>
               </div>
