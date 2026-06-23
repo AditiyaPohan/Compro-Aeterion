@@ -229,34 +229,34 @@ export const PROJECTS: Project[] = [
     year: "2024",
     image: asset("/assets/images/portfolio/it/web-hero.jpg"),
     summary:
-      "Website korporat premium untuk Valentino Group — responsif, cepat, SEO-friendly, lengkap dengan katalog produk dan visualizer ruangan interaktif.",
+      "Penyedia jasa solusi IT end-to-end — website company profile, web app, super app, aplikasi mobile Android, hingga pentest aplikasi.",
     summaryEn:
-      "A premium corporate website for Valentino Group — responsive, fast, SEO-friendly, complete with a product catalog and an interactive room visualizer.",
+      "End-to-end IT solutions provider — company profile websites, web apps, super apps, Android mobile apps, and application penetration testing.",
     description:
-      "Tim Aetherion merancang dan membangun website korporat lengkap untuk Valentino Group, brand tile large-slab ternama: homepage memukau, brand story, katalog produk, visualizer ruangan 'Design Your Space', dan showcase mitra — dalam build yang cepat, mobile-first, dan ramah SEO. Situs telah tayang di www.valentinogroup.id.",
+      "PT Aetherion Zynera Indonesia adalah partner IT end-to-end: kami membangun website company profile, web application, super app, dan aplikasi mobile Android, serta mengamankannya melalui penetration testing. Salah satu hasil karya kami adalah website korporat Valentino Group yang telah tayang di www.valentinogroup.id.",
     descriptionEn:
-      "The Aetherion team designed and built a complete corporate website for Valentino Group, a leading large-slab tile brand: a striking homepage, brand story, product catalog, a 'Design Your Space' room visualizer, and a partner showcase — in a fast, mobile-first, SEO-friendly build. Live at www.valentinogroup.id.",
+      "PT Aetherion Zynera Indonesia is an end-to-end IT partner: we build company profile websites, web applications, super apps, and Android mobile apps, and secure them through penetration testing. One of our works is the Valentino Group corporate website, now live at www.valentinogroup.id.",
     scope: [
-      "Desain & pengembangan website korporat",
-      "Layout responsif (desktop, tablet, mobile)",
-      "Katalog produk & visualizer ruangan",
-      "Setup SEO & optimasi performa",
+      "Website company profile & web application",
+      "Super app & aplikasi mobile Android",
+      "Pentest aplikasi (penetration testing)",
+      "Maintenance, monitoring & support",
     ],
     scopeEn: [
-      "Corporate website design & development",
-      "Responsive layout (desktop, tablet, mobile)",
-      "Product catalog & room visualizer",
-      "SEO setup & performance tuning",
+      "Company profile website & web application",
+      "Super app & Android mobile app",
+      "Application penetration testing",
+      "Maintenance, monitoring & support",
     ],
     results: [
-      { value: "100%", label: "Responsif" },
-      { value: "Live", label: "Tayang Produksi" },
-      { value: "SEO", label: "Teroptimasi" },
+      { value: "6+", label: "Layanan IT" },
+      { value: "Live", label: "Proyek Klien" },
+      { value: "Secure", label: "Lewat Pentest" },
     ],
     resultsEn: [
-      { value: "100%", label: "Responsive" },
-      { value: "Live", label: "In Production" },
-      { value: "SEO", label: "Optimized" },
+      { value: "6+", label: "IT Services" },
+      { value: "Live", label: "Client Projects" },
+      { value: "Secure", label: "By Pentest" },
     ],
   },
 ];

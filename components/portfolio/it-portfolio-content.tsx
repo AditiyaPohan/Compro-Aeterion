@@ -4,7 +4,8 @@ import React from "react";
 import Link from "next/link";
 import {
   ArrowRight, ChevronRight, Check, ExternalLink, Globe, Code2,
-  Smartphone, Search, LayoutTemplate, Boxes, Gauge, ShieldCheck,
+  Smartphone, Layers, AppWindow, ShieldCheck, Wrench, LayoutTemplate,
+  Boxes, Search,
 } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -16,12 +17,56 @@ import { useLang } from "@/components/providers/lang-provider";
 const IMG = (name: string) => asset(`/assets/images/portfolio/it/${name}`);
 const LIVE_URL = "https://www.valentinogroup.id/";
 
-const STACK = [
-  { icon: <LayoutTemplate size={15} />, label: "Corporate Website" },
-  { icon: <Boxes size={15} />, label: "Product Catalog" },
-  { icon: <Smartphone size={15} />, label: "Responsive Design" },
-  { icon: <Search size={15} />, label: "SEO Optimized" },
-  { icon: <Gauge size={15} />, label: "Performance" },
+/** IT services Aetherion provides */
+const SERVICES = [
+  {
+    icon: <Globe size={22} />,
+    title: "Website Company Profile",
+    titleEn: "Company Profile Website",
+    desc: "Website company profile profesional — cepat, responsif, dan siap SEO.",
+    descEn: "Professional company profile websites — fast, responsive, and SEO-ready.",
+    accent: "from-azure to-brand",
+  },
+  {
+    icon: <AppWindow size={22} />,
+    title: "Web Application",
+    titleEn: "Web Application",
+    desc: "Aplikasi berbasis web custom untuk kebutuhan bisnis & operasional internal.",
+    descEn: "Custom web applications for business and internal operations.",
+    accent: "from-brand to-brand-deep",
+  },
+  {
+    icon: <Layers size={22} />,
+    title: "Super App",
+    titleEn: "Super App",
+    desc: "Platform super app multi-fitur dalam satu ekosistem terintegrasi.",
+    descEn: "Multi-feature super app platforms within one integrated ecosystem.",
+    accent: "from-violet-600 to-brand-deep",
+  },
+  {
+    icon: <Smartphone size={22} />,
+    title: "Mobile Android App",
+    titleEn: "Mobile Android App",
+    desc: "Aplikasi mobile Android yang ringan, andal, dan nyaman digunakan.",
+    descEn: "Android mobile apps that are light, reliable, and user-friendly.",
+    accent: "from-emerald-600 to-teal-700",
+  },
+  {
+    icon: <ShieldCheck size={22} />,
+    title: "Pentest Aplikasi",
+    titleEn: "Application Pentest",
+    desc: "Pengujian keamanan aplikasi (penetration testing) untuk menutup celah keamanan.",
+    descEn: "Application penetration testing to identify and close security gaps.",
+    accent: "from-rose-500 to-rose-700",
+  },
+  {
+    icon: <Wrench size={22} />,
+    title: "Maintenance & Support",
+    titleEn: "Maintenance & Support",
+    desc: "Pemeliharaan, monitoring, dan dukungan teknis berkelanjutan.",
+    descEn: "Ongoing maintenance, monitoring, and technical support.",
+    accent: "from-gold/80 to-amber-600",
+  },
 ];
 
 /** Browser-style frame around a website screenshot */
@@ -67,72 +112,95 @@ export function ItPortfolioContent() {
               </nav>
             </Reveal>
 
-            <div className="mt-10 grid items-center gap-12 lg:grid-cols-[1fr_1.15fr]">
-              <div>
-                <Reveal index={1}>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur">
-                    {isEn ? "Web Development · 2024" : "Pengembangan Web · 2024"}
-                  </span>
-                </Reveal>
-                <Reveal index={2}>
-                  <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] text-glow sm:text-5xl">
-                    {isEn ? "IT Solutions" : "Solusi IT"}
-                    <span className="mt-2 block text-2xl font-semibold text-gold sm:text-3xl">
-                      {isEn ? "Valentino Group Corporate Website" : "Website Korporat Valentino Group"}
-                    </span>
-                  </h1>
-                </Reveal>
-                <Reveal index={3}>
-                  <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-                    {isEn
-                      ? "A premium corporate website built by the Aetherion team for Valentino Group — a leading large-slab tile brand. Modern, fast, responsive, and SEO-ready, complete with a product catalog and an interactive 'Design Your Space' visualizer."
-                      : "Website korporat premium yang dibangun tim Aetherion untuk Valentino Group — brand tile large-slab ternama. Modern, cepat, responsif, dan siap SEO, lengkap dengan katalog produk serta visualizer interaktif 'Design Your Space'."}
-                  </p>
-                </Reveal>
-                <Reveal index={4}>
-                  <div className="mt-7 flex flex-wrap gap-3">
-                    {STACK.map((s) => (
-                      <span key={s.label} className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white/90 backdrop-blur">
-                        <span className="text-gold">{s.icon}</span>
-                        {s.label}
-                      </span>
-                    ))}
-                  </div>
-                </Reveal>
-                <Reveal index={5}>
-                  <Magnetic strength={0.3}>
-                    <a
-                      href={LIVE_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-300 hover:bg-[#c79f2c]"
-                    >
-                      {isEn ? "Visit Live Site" : "Kunjungi Situs Live"}
-                      <ExternalLink size={16} />
-                    </a>
-                  </Magnetic>
-                </Reveal>
-              </div>
-
+            <div className="mt-10 max-w-3xl">
+              <Reveal index={1}>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur">
+                  {isEn ? "Digital Solutions Provider" : "Penyedia Jasa Solusi Digital"}
+                </span>
+              </Reveal>
               <Reveal index={2}>
-                <BrowserFrame src={IMG("web-hero.jpg")} alt="Valentino Group homepage" />
+                <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] text-glow sm:text-5xl lg:text-[3.4rem]">
+                  {isEn ? "IT Solutions" : "Solusi IT"}
+                  <span className="mt-2 block text-2xl font-semibold text-gold sm:text-3xl">
+                    {isEn
+                      ? "Website, Apps, Super App & Application Security"
+                      : "Website, Aplikasi, Super App & Keamanan Aplikasi"}
+                  </span>
+                </h1>
+              </Reveal>
+              <Reveal index={3}>
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+                  {isEn
+                    ? "PT Aetherion Zynera Indonesia is your end-to-end IT partner — we build company profile websites, web applications, super apps, and Android mobile apps, and secure them through application penetration testing."
+                    : "PT Aetherion Zynera Indonesia adalah partner IT end-to-end Anda — kami membangun website company profile, web application, super app, dan aplikasi mobile Android, serta mengamankannya melalui penetration testing aplikasi."}
+                </p>
+              </Reveal>
+              <Reveal index={4}>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {["Website", "Web Apps", "Super App", "Mobile Android", "Pentest"].map((s) => (
+                    <span key={s} className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white/90 backdrop-blur">
+                      <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
+              <Reveal index={5}>
+                <Magnetic strength={0.3}>
+                  <Link
+                    href="/#contact"
+                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-300 hover:bg-[#c79f2c]"
+                  >
+                    {isEn ? "Start a Project" : "Mulai Proyek"}
+                    <ArrowRight size={16} />
+                  </Link>
+                </Magnetic>
               </Reveal>
             </div>
           </div>
         </section>
 
+        {/* ── SERVICES ── */}
+        <section className="bg-white py-20">
+          <div className="container-x">
+            <Reveal>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+                <span className="h-px w-6 bg-gold" /> {isEn ? "Our IT Services" : "Layanan IT Kami"}
+              </span>
+            </Reveal>
+            <Reveal index={1}>
+              <h2 className="mt-4 max-w-2xl text-3xl font-extrabold text-brand sm:text-4xl">
+                {isEn ? "Everything You Need, Built In-House" : "Semua Kebutuhan Digital, Kami Kerjakan"}
+              </h2>
+            </Reveal>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {SERVICES.map((s, i) => (
+                <Reveal key={s.title} index={i % 3}>
+                  <div className="group h-full rounded-[1.5rem] border border-line bg-surface p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+                    <span className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${s.accent} text-white shadow`}>
+                      {s.icon}
+                    </span>
+                    <h3 className="mt-5 text-lg font-bold text-brand">{isEn ? s.titleEn : s.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{isEn ? s.descEn : s.desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── STATS ── */}
-        <section className="border-b border-line bg-white py-12">
+        <section className="border-y border-line bg-surface py-12">
           <div className="container-x grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[
-              { value: "100%", label: isEn ? "Responsive" : "Responsif" },
-              { value: "SEO", label: isEn ? "Optimized" : "Teroptimasi" },
-              { value: "6+", label: isEn ? "Page Sections" : "Seksi Halaman" },
-              { value: "Live", label: isEn ? "In Production" : "Tayang Produksi" },
+              { value: "6+", label: isEn ? "IT Services" : "Layanan IT" },
+              { value: "End-to-End", label: isEn ? "Development" : "Pengerjaan" },
+              { value: "Live", label: isEn ? "Client Projects" : "Proyek Klien" },
+              { value: "Secure", label: isEn ? "By Pentest" : "Lewat Pentest" },
             ].map((s, i) => (
               <Reveal key={s.label} index={i}>
-                <div className="rounded-2xl bg-surface p-6 text-center shadow-card">
-                  <p className="text-3xl font-extrabold text-brand sm:text-4xl">{s.value}</p>
+                <div className="rounded-2xl bg-white p-6 text-center shadow-card">
+                  <p className="text-2xl font-extrabold text-brand sm:text-3xl">{s.value}</p>
                   <p className="mt-1.5 text-xs font-medium uppercase tracking-wide text-ink-soft">{s.label}</p>
                 </div>
               </Reveal>
@@ -140,36 +208,44 @@ export function ItPortfolioContent() {
           </div>
         </section>
 
-        {/* ── OVERVIEW + SCOPE ── */}
-        <section className="bg-surface py-20">
-          <div className="container-x grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-            <div>
+        {/* ── FEATURED CASE STUDY: Valentino Group ── */}
+        <section className="bg-white py-20">
+          <div className="container-x">
+            <Reveal>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+                <span className="h-px w-6 bg-gold" /> {isEn ? "Case Study · Website" : "Studi Kasus · Website"}
+              </span>
+            </Reveal>
+            <Reveal index={1}>
+              <h2 className="mt-4 text-3xl font-extrabold text-brand sm:text-4xl">
+                {isEn ? "One of Our Website Builds" : "Salah Satu Hasil Pembuatan Website Kami"}
+              </h2>
+            </Reveal>
+            <Reveal index={2}>
+              <p className="mt-3 max-w-2xl text-ink-soft">
+                {isEn
+                  ? "The Aetherion team designed and developed this premium corporate website for our client, Valentino Group — responsive, fast, SEO-ready, complete with a product catalog and an interactive 'Design Your Space' room visualizer. Now live in production."
+                  : "Tim Aetherion merancang dan mengembangkan website korporat premium ini untuk klien kami, Valentino Group — responsif, cepat, siap SEO, lengkap dengan katalog produk dan visualizer ruangan interaktif 'Design Your Space'. Kini telah tayang di produksi."}
+              </p>
+            </Reveal>
+
+            <Reveal index={3}>
+              <div className="mt-10">
+                <BrowserFrame src={IMG("web-hero.jpg")} alt="Valentino Group website by Aetherion" />
+              </div>
+            </Reveal>
+
+            {/* What we built + live link */}
+            <div className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
               <Reveal>
-                <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-                  <span className="h-px w-6 bg-gold" /> Overview
-                </span>
-              </Reveal>
-              <Reveal index={1}>
-                <h2 className="mt-4 text-3xl font-extrabold text-brand sm:text-4xl">
-                  {isEn ? "What We Built" : "Yang Kami Bangun"}
-                </h2>
-              </Reveal>
-              <Reveal index={2}>
-                <p className="mt-5 text-lg leading-relaxed text-ink-soft">
-                  {isEn
-                    ? "We designed and developed a complete corporate web experience for Valentino Group: a striking homepage, brand story, product catalog, an interactive room visualizer to preview tiles on walls and floors, and a trusted-by section showcasing major partners — all wrapped in a fast, mobile-first, SEO-friendly build."
-                    : "Kami merancang dan mengembangkan pengalaman web korporat lengkap untuk Valentino Group: homepage yang memukau, brand story, katalog produk, visualizer ruangan interaktif untuk pratinjau tile pada dinding dan lantai, serta bagian mitra terpercaya — semuanya dalam build yang cepat, mobile-first, dan ramah SEO."}
-                </p>
-              </Reveal>
-              <Reveal index={3}>
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2">
                   {[
-                    { icon: <Code2 size={18} />, t: isEn ? "Custom Web Development" : "Pengembangan Web Kustom", d: isEn ? "Hand-crafted, component-based front-end." : "Front-end berbasis komponen yang rapi." },
+                    { icon: <LayoutTemplate size={18} />, t: isEn ? "Corporate Website" : "Website Korporat", d: isEn ? "Striking homepage & brand story." : "Homepage memukau & brand story." },
                     { icon: <Boxes size={18} />, t: isEn ? "Product Catalog" : "Katalog Produk", d: isEn ? "Organized slab & tile collections." : "Koleksi slab & tile yang tertata." },
-                    { icon: <LayoutTemplate size={18} />, t: isEn ? "Room Visualizer" : "Visualizer Ruangan", d: isEn ? "‘Design Your Space’ interactive preview." : "Pratinjau interaktif ‘Design Your Space’." },
-                    { icon: <ShieldCheck size={18} />, t: isEn ? "SEO & Performance" : "SEO & Performa", d: isEn ? "Fast, indexable, mobile-first." : "Cepat, terindeks, mobile-first." },
+                    { icon: <Code2 size={18} />, t: isEn ? "Room Visualizer" : "Visualizer Ruangan", d: isEn ? "Interactive 'Design Your Space'." : "Interaktif 'Design Your Space'." },
+                    { icon: <Search size={18} />, t: isEn ? "SEO & Performance" : "SEO & Performa", d: isEn ? "Fast, indexable, mobile-first." : "Cepat, terindeks, mobile-first." },
                   ].map((f) => (
-                    <div key={f.t} className="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-card">
+                    <div key={f.t} className="flex items-start gap-3 rounded-2xl bg-surface p-4 shadow-card">
                       <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">{f.icon}</span>
                       <div>
                         <p className="text-sm font-bold text-brand">{f.t}</p>
@@ -179,50 +255,26 @@ export function ItPortfolioContent() {
                   ))}
                 </div>
               </Reveal>
-            </div>
-
-            <Reveal index={2}>
-              <div className="rounded-[2rem] bg-white p-8 shadow-card">
-                <h3 className="text-lg font-bold text-brand">{isEn ? "Project Scope" : "Lingkup Proyek"}</h3>
-                <ul className="mt-6 space-y-4">
-                  {(isEn
-                    ? ["Corporate website design & development", "Responsive layout (desktop, tablet, mobile)", "Product catalog & collection pages", "Interactive room/tile visualizer", "SEO setup & performance tuning", "Partner & client showcase"]
-                    : ["Desain & pengembangan website korporat", "Layout responsif (desktop, tablet, mobile)", "Katalog produk & halaman koleksi", "Visualizer ruangan/tile interaktif", "Setup SEO & optimasi performa", "Showcase mitra & klien"]
-                  ).map((s) => (
-                    <li key={s} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
-                        <Check size={14} strokeWidth={3} />
-                      </span>
-                      <span className="font-medium text-ink">{s}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 border-t border-line pt-6 text-sm">
-                  <p className="text-ink-soft">Client</p>
-                  <p className="font-semibold text-ink">Valentino Group</p>
-                  <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-azure hover:text-brand transition-colors">
-                    www.valentinogroup.id <ExternalLink size={13} />
+              <Reveal index={1}>
+                <div className="flex h-full flex-col justify-center rounded-[1.5rem] bg-brand-deep p-7 text-white shadow-card">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-white/60">Client</p>
+                  <p className="mt-1 text-xl font-bold">Valentino Group</p>
+                  <p className="mt-3 text-sm text-white/70">
+                    {isEn ? "Built & delivered by PT Aetherion Zynera Indonesia." : "Dibangun & diserahkan oleh PT Aetherion Zynera Indonesia."}
+                  </p>
+                  <a
+                    href={LIVE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-[#c79f2c]"
+                  >
+                    {isEn ? "Visit Live Site" : "Kunjungi Situs Live"} <ExternalLink size={15} />
                   </a>
                 </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
+              </Reveal>
+            </div>
 
-        {/* ── SCREENSHOT GALLERY ── */}
-        <section className="bg-white py-20">
-          <div className="container-x">
-            <Reveal>
-              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-                <span className="h-px w-6 bg-gold" /> {isEn ? "Live Screenshots" : "Tangkapan Layar Situs"}
-              </span>
-            </Reveal>
-            <Reveal index={1}>
-              <h2 className="mt-4 text-3xl font-extrabold text-brand sm:text-4xl">
-                {isEn ? "A Look Inside the Website" : "Lihat Lebih Dekat Website-nya"}
-              </h2>
-            </Reveal>
-
+            {/* Screenshot gallery */}
             <div className="mt-10 grid gap-8 lg:grid-cols-2">
               {[
                 { src: "web-about.jpg", t: isEn ? "Brand Story" : "Brand Story" },
@@ -246,14 +298,14 @@ export function ItPortfolioContent() {
           <div className="container-x">
             <Reveal>
               <h2 className="text-center text-3xl font-extrabold text-brand sm:text-4xl">
-                {isEn ? "Trusted by Leading Brands" : "Dipercaya Brand Ternama"}
+                {isEn ? "Trusted Across Industries" : "Dipercaya Lintas Industri"}
               </h2>
             </Reveal>
             <Reveal index={1}>
               <p className="mx-auto mt-3 max-w-2xl text-center text-ink-soft">
                 {isEn
-                  ? "Valentino Group's partners and clients featured across the website we built."
-                  : "Mitra dan klien Valentino Group yang ditampilkan di seluruh website yang kami bangun."}
+                  ? "Brands and partners featured across the digital products we deliver."
+                  : "Brand dan mitra yang tampil di berbagai produk digital yang kami kerjakan."}
               </p>
             </Reveal>
             <Reveal index={2}>
@@ -277,29 +329,23 @@ export function ItPortfolioContent() {
             </Reveal>
             <Reveal index={1}>
               <h2 className="mt-5 max-w-2xl text-3xl font-extrabold sm:text-4xl">
-                {isEn ? "Need a Website That Performs?" : "Butuh Website yang Berperforma?"}
+                {isEn ? "Have a Website or App in Mind?" : "Punya Rencana Website atau Aplikasi?"}
               </h2>
             </Reveal>
             <Reveal index={2}>
               <p className="mt-4 max-w-xl text-white/75">
                 {isEn
-                  ? "From corporate sites to web apps and custom systems — let the Aetherion team build your digital presence."
-                  : "Dari website korporat hingga web app dan sistem kustom — biarkan tim Aetherion membangun kehadiran digital Anda."}
+                  ? "From company profile websites to web & mobile apps, super apps, and application security — let the Aetherion team build it for you."
+                  : "Dari website company profile hingga web & mobile app, super app, dan keamanan aplikasi — biarkan tim Aetherion yang mengerjakannya untuk Anda."}
               </p>
             </Reveal>
             <Reveal index={3}>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <Magnetic strength={0.4}>
-                  <Link href="/#contact" className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-300 hover:bg-[#c79f2c]">
-                    {isEn ? "Start a Project" : "Mulai Proyek"}
-                    <ArrowRight size={18} />
-                  </Link>
-                </Magnetic>
-                <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-300 hover:bg-white/10">
-                  {isEn ? "View Live Site" : "Lihat Situs Live"}
-                  <ExternalLink size={16} />
-                </a>
-              </div>
+              <Magnetic strength={0.4}>
+                <Link href="/#contact" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-300 hover:bg-[#c79f2c]">
+                  {isEn ? "Start a Project" : "Mulai Proyek"}
+                  <ArrowRight size={18} />
+                </Link>
+              </Magnetic>
             </Reveal>
           </div>
         </section>
