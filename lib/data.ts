@@ -178,6 +178,47 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    title: "Design Portfolio",
+    titleEn: "Design Portfolio",
+    client: "PT. Aetherion Zynera Indonesia",
+    accent: "gold",
+    slug: "dkv-portfolio",
+    category: "Desain Grafis & Visual",
+    categoryEn: "Graphic Design & Visual",
+    year: "2025",
+    image: asset("/assets/images/portfolio/dkv/img_54.png"),
+    summary:
+      "Koleksi karya desain grafis dan komunikasi visual — dari digital imaging dan foto konseptual hingga konten media sosial, iklan produk, dan desain event.",
+    summaryEn:
+      "A curated graphic design & visual communication portfolio — from digital imaging and conceptual photography to social media content, product advertising, and event design.",
+    description:
+      "Tim kreatif Aetherion menghadirkan karya visual berkualitas tinggi meliputi digital imaging, fotografi konseptual, konten skincare untuk Instagram, iklan produk, desain event esports, dan social media advertising — semua dikerjakan dengan Adobe Photoshop, Illustrator, dan InDesign.",
+    descriptionEn:
+      "The Aetherion creative team delivers high-quality visual works including digital imaging, conceptual photography, skincare Instagram content, product advertising, esports event design, and social media advertising — all executed with Adobe Photoshop, Illustrator, and InDesign.",
+    scope: [
+      "Digital Imaging & Manipulasi Foto",
+      "Konten Media Sosial (Feed & Story)",
+      "Iklan Produk & Visual Advertising",
+      "Desain Event & Turnamen Esports",
+    ],
+    scopeEn: [
+      "Digital Imaging & Photo Manipulation",
+      "Social Media Content (Feed & Story)",
+      "Product Advertising & Visual Ads",
+      "Event Design & Esports Tournament",
+    ],
+    results: [
+      { value: "6+", label: "Kategori Karya" },
+      { value: "4", label: "Klien Industri" },
+      { value: "50+", label: "Aset Visual" },
+    ],
+    resultsEn: [
+      { value: "6+", label: "Design Categories" },
+      { value: "4", label: "Industry Clients" },
+      { value: "50+", label: "Visual Assets" },
+    ],
+  },
+  {
     title: "Digital Marketing Portfolio",
     titleEn: "Digital Marketing Portfolio",
     client: "PT. Aetherion Zynera Indonesia",
