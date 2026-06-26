@@ -31,8 +31,7 @@ export function Testimonials() {
   return (
     <section className="relative overflow-hidden bg-surface py-24">
       <div
-        data-speed="0.35"
-        className="layer pointer-events-none absolute right-8 top-12 h-40 w-40 rounded-full bg-azure-soft blur-2xl"
+        className="pointer-events-none absolute right-8 top-12 h-40 w-40 rounded-full bg-azure-soft blur-2xl"
       />
       <div
         data-speed="0.55"

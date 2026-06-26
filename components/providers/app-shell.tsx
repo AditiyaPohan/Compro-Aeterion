@@ -24,9 +24,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
+    // Lewati smooth-scroll di perangkat lemah → mereka pakai scroll native yang
+    // jauh lebih ringan. (deviceMemory & jumlah core sebagai indikator kasar.)
+    const nav = navigator as Navigator & { deviceMemory?: number };
+    const lowEnd =
+      (nav.deviceMemory != null && nav.deviceMemory <= 4) ||
+      (nav.hardwareConcurrency != null && nav.hardwareConcurrency <= 4);
+    if (lowEnd) return;
+
     const lenis = new Lenis({
-      lerp: 0.07,
-      wheelMultiplier: 0.9,
+      lerp: 0.1,
+      wheelMultiplier: 1,
       smoothWheel: true,
       syncTouch: false,
     });

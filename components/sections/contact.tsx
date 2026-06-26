@@ -68,11 +68,10 @@ export function Contact() {
       />
       <div data-speed="0.5" className="layer bg-grid absolute inset-0 opacity-20" />
       <div
-        data-speed="0.2"
-        className="layer animate-glow pointer-events-none absolute left-1/4 top-10 hidden h-80 w-80 rounded-full bg-azure/40 blur-[130px] md:block"
+        className="animate-glow pointer-events-none absolute left-1/4 top-10 hidden h-80 w-80 rounded-full bg-azure/40 blur-[130px] md:block"
       />
       <div data-speed="1.3" className="layer absolute inset-0">
-        <ParticleField count={20} color="bg-gold/50" />
+        <ParticleField count={12} color="bg-gold/50" />
       </div>
 
       <div className="container-x relative">

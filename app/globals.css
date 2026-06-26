@@ -198,18 +198,17 @@
   animation: gradient-pan 16s ease infinite;
 }
 
-/* Glow pulse */
+/* Glow pulse — opacity only (no transform on blurred layers = no per-frame
+   re-rasterization of the blur; keeps the visual pulse, kills the jank). */
 @keyframes glow-pulse {
 
   0%,
   100% {
-    opacity: 0.5;
-    transform: scale(1);
+    opacity: 0.45;
   }
 
   50% {
     opacity: 0.85;
-    transform: scale(1.08);
   }
 }
 

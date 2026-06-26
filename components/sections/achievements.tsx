@@ -58,15 +58,13 @@ export function Achievements() {
         style={{ backgroundImage: `url(${asset("/assets/floating-shapes.svg")})` }}
       />
       <div
-        data-speed="0.2"
-        className="layer animate-glow pointer-events-none absolute -left-20 top-0 hidden h-72 w-72 rounded-full bg-azure/30 blur-3xl md:block"
+        className="animate-glow pointer-events-none absolute -left-20 top-0 hidden h-72 w-72 rounded-full bg-azure/30 blur-3xl md:block"
       />
       <div
-        data-speed="0.2"
-        className="layer animate-glow pointer-events-none absolute -right-20 bottom-0 hidden h-72 w-72 rounded-full bg-gold/15 blur-3xl md:block"
+        className="animate-glow pointer-events-none absolute -right-20 bottom-0 hidden h-72 w-72 rounded-full bg-gold/15 blur-3xl md:block"
       />
       <div data-speed="1.3" className="layer absolute inset-0">
-        <ParticleField count={16} color="bg-white/50" />
+        <ParticleField count={10} color="bg-white/50" />
       </div>
 
       <div className="container-x relative grid grid-cols-2 gap-10 lg:grid-cols-4">

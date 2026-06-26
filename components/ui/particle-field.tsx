@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
  * tiap titik melayang independen. Dipakai sebagai layer kecepatan tertinggi.
  */
 export function ParticleField({
-  count = 18,
+  count = 12,
   className,
   color = "bg-white/70",
 }: {
@@ -41,7 +41,12 @@ export function ParticleField({
   // tidak membebani render awal (LCP) dan tidak ada di HP sama sekali.
   const [enabled, setEnabled] = useState(false);
   useEffect(() => {
+    const nav = navigator as Navigator & { deviceMemory?: number };
+    const lowEnd =
+      (nav.deviceMemory != null && nav.deviceMemory <= 4) ||
+      (nav.hardwareConcurrency != null && nav.hardwareConcurrency <= 4);
     if (
+      !lowEnd &&
       window.matchMedia(
         "(min-width: 768px) and (prefers-reduced-motion: no-preference)"
       ).matches
