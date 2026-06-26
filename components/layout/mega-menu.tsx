@@ -7,6 +7,7 @@ import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { LayoutGrid, X, ArrowUpRight, ArrowRight } from "lucide-react";
 import { MEGA_MENU } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { useLang } from "@/components/providers/lang-provider";
 
 // flat list semua gambar → di-render bertumpuk supaya ter-preload & crossfade mulus
 const FLAT = MEGA_MENU.flatMap((c, ci) =>
@@ -33,6 +34,7 @@ const rowV: Variants = {
  *  - Crossfade hanya pakai opacity/scale (GPU), tanpa filter blur per-gambar.
  */
 export function MegaMenu({ scrolled }: { scrolled: boolean }) {
+  const { t } = useLang();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [cat, setCat] = useState(0);
@@ -129,7 +131,7 @@ export function MegaMenu({ scrolled }: { scrolled: boolean }) {
                 className="flex flex-col justify-center"
               >
                 <span className="mb-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-                  <span className="h-px w-6 bg-gold" /> Explore
+                  <span className="h-px w-6 bg-gold" /> {t.megaMenu.explore}
                 </span>
                 {MEGA_MENU.map((c, i) => {
                   const active = i === cat;
@@ -251,7 +253,7 @@ export function MegaMenu({ scrolled }: { scrolled: boolean }) {
                   onClick={() => setOpen(false)}
                   className="group inline-flex w-fit items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-300 hover:bg-[#c79f2c]"
                 >
-                  Explore {activeCat.title}
+                  {t.megaMenu.explore} {activeCat.title}
                   <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>

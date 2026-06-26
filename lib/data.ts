@@ -367,28 +367,43 @@ export const MEGA_MENU: MegaCategory[] = [
 export type ServiceDetail = {
   slug: string;
   title: string;
+  titleEn?: string;
   tagline: string;
+  taglineEn?: string;
   icon: string;
   image: string;
   intro: string;
+  introEn?: string;
   about: string[];
+  aboutEn?: string[];
   offerings: { label: string; desc: string; image: string }[];
+  offeringsEn?: { label: string; desc: string }[];
   benefits: string[];
+  benefitsEn?: string[];
   process: { title: string; desc: string }[];
+  processEn?: { title: string; desc: string }[];
 };
 
 export const SERVICE_DETAILS: ServiceDetail[] = [
   {
     slug: "audit",
     title: "Corporate Legal & Licensing",
+    titleEn: "Corporate Legal & Licensing",
     tagline: "Membangun Kepercayaan, Memastikan Kepatuhan, Mempercepat Pertumbuhan",
+    taglineEn: "Building Trust, Ensuring Compliance, Accelerating Growth",
     icon: "ShieldCheck",
     image: `${SVC_IMG}/audit-corporate-audit.webp`,
     intro:
       "PT Aetherion Zynera Indonesia adalah Perusahaan Konsultan Profesional yang bergerak di bidang Legalitas Perusahaan, Audit Laporan Keuangan, Sertifikasi ISO, Perpajakan, SBU, dan SKK.",
+    introEn:
+      "PT Aetherion Zynera Indonesia is a Professional Consulting Company specializing in Corporate Legality, Financial Statement Audit, ISO Certification, Taxation, SBU, and SKK.",
     about: [
       "Kami hadir sebagai solusi terpercaya untuk membantu perusahaan memenuhi kebutuhan perizinan, kepatuhan regulasi, dan penguatan kredibilitas bisnis melalui layanan yang cepat, profesional, dan berorientasi pada hasil.",
       "Dengan tim berpengalaman dan bersertifikasi, kami memastikan setiap proses audit, legalitas, dan kepatuhan berjalan sesuai standar regulasi yang berlaku — memberikan kepastian hukum dan kepercayaan kepada seluruh pemangku kepentingan.",
+    ],
+    aboutEn: [
+      "We serve as a trusted solution to help companies meet their licensing, regulatory compliance, and business credibility needs through fast, professional, and results-oriented services.",
+      "With an experienced and certified team, we ensure every audit, legal, and compliance process meets applicable regulatory standards — providing legal certainty and trust to all stakeholders.",
     ],
     offerings: [
       {
@@ -407,11 +422,22 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
         image: `${SVC_IMG}/audit-business-compliance.webp`,
       },
     ],
+    offeringsEn: [
+      { label: "Corporate Legality", desc: "Business licensing, deed of establishment, amendments, and corporate legal documents." },
+      { label: "Financial Audit & Taxation", desc: "Independent financial audit, tax report review, and tax compliance." },
+      { label: "ISO, SBU & SKK Certification", desc: "Assistance with ISO certification, Business Entity Certification (SBU), and Construction SKK." },
+    ],
     benefits: [
       "Konsultan berpengalaman & bersertifikasi resmi",
       "Proses cepat, transparan, dan berorientasi hasil",
       "Kerahasiaan data klien terjaga penuh",
       "Solusi end-to-end dari perizinan hingga kepatuhan",
+    ],
+    benefitsEn: [
+      "Experienced & officially certified consultants",
+      "Fast, transparent, and results-oriented process",
+      "Full confidentiality of client data",
+      "End-to-end solutions from licensing to compliance",
     ],
     process: [
       { title: "Konsultasi Awal", desc: "Identifikasi kebutuhan legalitas dan kepatuhan perusahaan Anda." },
@@ -419,43 +445,74 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       { title: "Proses & Pengajuan", desc: "Pengurusan resmi ke instansi terkait dengan pemantauan berkala." },
       { title: "Serah Terima & Laporan", desc: "Penyerahan dokumen final beserta laporan kepatuhan lengkap." },
     ],
+    processEn: [
+      { title: "Initial Consultation", desc: "Identify your company's legal and compliance needs." },
+      { title: "Document Preparation", desc: "Collect and verify all required documents." },
+      { title: "Processing & Submission", desc: "Official handling with relevant agencies and periodic monitoring." },
+      { title: "Handover & Report", desc: "Delivery of final documents with a complete compliance report." },
+    ],
   },
   {
     slug: "consulting",
-    title: "Business Consulting",
-    tagline: "Strategy that turns complexity into measurable outcomes",
+    title: "Konsultasi Bisnis",
+    titleEn: "Business Consulting",
+    tagline: "Strategi yang mengubah kompleksitas menjadi hasil yang terukur",
+    taglineEn: "Strategy that turns complexity into measurable outcomes",
     icon: "Briefcase",
     image: `${SVC_IMG}/consulting-strategy-meeting.webp`,
     intro:
+      "Pendampingan strategis yang membantu pimpinan mengambil keputusan dengan percaya diri — berbasis data, wawasan pasar, dan pengalaman operasional langsung.",
+    introEn:
       "Strategic advisory that helps leadership make confident decisions — grounded in data, market insight, and hands-on operational experience.",
     about: [
+      "Kami bekerja bersama tim Anda untuk mendiagnosis tantangan, merancang strategi, dan menerjemahkannya menjadi eksekusi nyata. Bukan sekadar presentasi generik — rencana yang praktis, terprioritaskan, dan benar-benar dapat dijalankan tim Anda.",
+      "Mulai dari strategi pertumbuhan hingga perbaikan proses dan manajemen risiko, konsultan kami membawa pengalaman lintas industri dengan fokus pada nilai jangka panjang yang berkelanjutan.",
+    ],
+    aboutEn: [
       "We work alongside your team to diagnose challenges, design strategy, and translate it into execution. No generic slide decks — practical, prioritized plans your people can actually deliver.",
       "From growth strategy to process improvement and risk management, our consultants bring cross-industry experience and a bias toward sustainable, long-term value.",
     ],
     offerings: [
       {
-        label: "Strategy Meeting",
-        desc: "Facilitated strategy workshops and growth roadmaps.",
+        label: "Rapat Strategi",
+        desc: "Workshop strategi terfasilitasi dan peta jalan pertumbuhan.",
         image: `${SVC_IMG}/consulting-strategy-meeting.webp`,
       },
       {
-        label: "Business Consultant",
-        desc: "Dedicated advisory on operations, finance, and scaling.",
+        label: "Konsultan Bisnis",
+        desc: "Pendampingan khusus untuk operasional, keuangan, dan skala bisnis.",
         image: `${SVC_IMG}/consulting-business-consultant.webp`,
       },
       {
-        label: "Executive Discussion",
-        desc: "Board-level guidance, risk management, and decision support.",
+        label: "Diskusi Eksekutif",
+        desc: "Arahan tingkat direksi, manajemen risiko, dan dukungan keputusan.",
         image: `${SVC_IMG}/consulting-executive-discussion.webp`,
       },
     ],
+    offeringsEn: [
+      { label: "Strategy Meeting", desc: "Facilitated strategy workshops and growth roadmaps." },
+      { label: "Business Consultant", desc: "Dedicated advisory on operations, finance, and scaling." },
+      { label: "Executive Discussion", desc: "Board-level guidance, risk management, and decision support." },
+    ],
     benefits: [
+      "Pendekatan strategis berbasis data",
+      "Keahlian lintas industri",
+      "Fokus pada eksekusi, bukan sekadar saran",
+      "Pola pikir kemitraan jangka panjang",
+    ],
+    benefitsEn: [
       "Data-driven, strategic approach",
       "Cross-industry expertise",
       "Execution-focused, not just advice",
       "Long-term partnership mindset",
     ],
     process: [
+      { title: "Penelusuran", desc: "Mendalami tujuan, data, dan kendala Anda." },
+      { title: "Diagnosis", desc: "Mengidentifikasi peluang dan risiko berdampak tinggi." },
+      { title: "Strategi", desc: "Menyusun peta jalan yang terprioritaskan dan dapat dijalankan." },
+      { title: "Pendampingan", desc: "Mendukung pelaksanaan dan mengukur hasilnya." },
+    ],
+    processEn: [
       { title: "Discovery", desc: "Deep-dive into your goals, data, and constraints." },
       { title: "Diagnosis", desc: "Pinpoint the highest-impact opportunities and risks." },
       { title: "Strategy", desc: "Co-create a prioritized, actionable roadmap." },
@@ -464,40 +521,65 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
   },
   {
     slug: "creative-agency",
-    title: "Creative Agency — Graphic Design & Branding",
-    tagline: "Distinct brands that are impossible to ignore",
+    title: "Agensi Kreatif — Desain Grafis & Branding",
+    titleEn: "Creative Agency — Graphic Design & Branding",
+    tagline: "Merek yang khas dan mustahil untuk diabaikan",
+    taglineEn: "Distinct brands that are impossible to ignore",
     icon: "Palette",
     image: `${SVC_IMG}/creative-branding-team.webp`,
     intro:
+      "Identitas merek dan sistem visual yang membuat bisnis Anda mudah diingat, terpercaya, dan konsisten di setiap titik sentuh.",
+    introEn:
       "Brand identities and visual systems that make your business memorable, trustworthy, and consistent across every touchpoint.",
     about: [
+      "Merek yang kuat lebih dari sekadar logo — ia adalah kesan yang dirasakan orang saat bertemu bisnis Anda. Kami merancang sistem identitas, profil perusahaan, dan pengalaman digital yang memancarkan kepercayaan diri dan kualitas.",
+      "Tim kreatif kami memadukan strategi dengan craft, sehingga merek Anda tidak hanya tampak menarik — tetapi juga bekerja keras memenangkan perhatian dan kepercayaan.",
+    ],
+    aboutEn: [
       "A strong brand is more than a logo — it's the feeling people get when they meet your business. We craft identity systems, company profiles, and digital experiences that communicate confidence and quality.",
       "Our creative team blends strategy with craft, so your brand doesn't just look good — it works hard to win attention and trust.",
     ],
     offerings: [
       {
-        label: "Branding Team",
-        desc: "Brand identity, logo systems, and brand guidelines.",
+        label: "Tim Branding",
+        desc: "Identitas merek, sistem logo, dan panduan merek.",
         image: `${SVC_IMG}/creative-branding-team.webp`,
       },
       {
-        label: "UI/UX Design",
-        desc: "Intuitive, beautiful interfaces for web and product.",
+        label: "Desain UI/UX",
+        desc: "Antarmuka yang intuitif dan indah untuk web dan produk.",
         image: `${SVC_IMG}/creative-ui-ux-design.webp`,
       },
       {
-        label: "Creative Workshop",
-        desc: "Campaign concepts, collateral, and company profiles.",
+        label: "Workshop Kreatif",
+        desc: "Konsep kampanye, materi pemasaran, dan profil perusahaan.",
         image: `${SVC_IMG}/creative-workshop.webp`,
       },
     ],
+    offeringsEn: [
+      { label: "Branding Team", desc: "Brand identity, logo systems, and brand guidelines." },
+      { label: "UI/UX Design", desc: "Intuitive, beautiful interfaces for web and product." },
+      { label: "Creative Workshop", desc: "Campaign concepts, collateral, and company profiles." },
+    ],
     benefits: [
+      "Arahan kreatif yang dipimpin strategi",
+      "Sistem identitas multi-kanal yang konsisten",
+      "Craft visual modern dan premium",
+      "Toolkit merek yang dapat dipakai ulang oleh tim Anda",
+    ],
+    benefitsEn: [
       "Strategy-led creative direction",
       "Consistent multi-channel identity systems",
       "Premium, modern visual craft",
       "Reusable brand toolkit for your team",
     ],
     process: [
+      { title: "Penemuan Merek", desc: "Memahami audiens, pasar, dan ambisi Anda." },
+      { title: "Konsep", desc: "Mengeksplorasi arah dan menentukan bahasa visual." },
+      { title: "Sistem Desain", desc: "Membangun identitas, komponen, dan panduan." },
+      { title: "Penerapan", desc: "Menerapkan merek di setiap titik sentuh." },
+    ],
+    processEn: [
       { title: "Brand Discovery", desc: "Understand your audience, market, and ambition." },
       { title: "Concept", desc: "Explore directions and define the visual language." },
       { title: "Design System", desc: "Build identity, components, and guidelines." },
@@ -506,40 +588,65 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
   },
   {
     slug: "digital-marketing",
-    title: "Digital Marketing",
-    tagline: "Growth engines powered by data, not guesswork",
+    title: "Pemasaran Digital",
+    titleEn: "Digital Marketing",
+    tagline: "Mesin pertumbuhan yang ditenagai data, bukan tebakan",
+    taglineEn: "Growth engines powered by data, not guesswork",
     icon: "TrendingUp",
     image: `${SVC_IMG}/digital-innovation.webp`,
     intro:
+      "Kampanye berbasis data yang meningkatkan jangkauan, keterlibatan, dan konversi berkualitas — terukur dari awal hingga akhir.",
+    introEn:
       "Data-driven campaigns that grow reach, engagement, and qualified conversions — measured end to end.",
     about: [
+      "Kami membangun sistem demand-generation terintegrasi mencakup SEO, paid media, dan konten, semuanya terhubung dengan analitik sehingga setiap rupiah dapat dipertanggungjawabkan.",
+      "Eksperimen berkelanjutan berarti pemasaran Anda terus membaik — biaya per leads lebih rendah, konversi lebih tinggi, dan hasil yang berlipat.",
+    ],
+    aboutEn: [
       "We build integrated demand-generation systems across SEO, paid media, and content, all tied to analytics so every rupiah is accountable.",
       "Continuous experimentation means your marketing keeps improving — lower cost per lead, higher conversion, compounding results.",
     ],
     offerings: [
       {
-        label: "Campaign Management",
-        desc: "Paid search, social, and display campaigns that convert.",
+        label: "Manajemen Kampanye",
+        desc: "Kampanye paid search, sosial, dan display yang mengonversi.",
         image: `${SVC_IMG}/digital-innovation.webp`,
       },
       {
-        label: "Content & SEO",
-        desc: "Search strategy and content that earns durable traffic.",
+        label: "Konten & SEO",
+        desc: "Strategi pencarian dan konten yang menghasilkan trafik berkelanjutan.",
         image: `${SVC_IMG}/creative-ui-ux-design.webp`,
       },
       {
-        label: "Analytics & CRO",
-        desc: "Dashboards and experiments that optimize conversion.",
+        label: "Analitik & CRO",
+        desc: "Dashboard dan eksperimen yang mengoptimalkan konversi.",
         image: `${SVC_IMG}/consulting-strategy-meeting.webp`,
       },
     ],
+    offeringsEn: [
+      { label: "Campaign Management", desc: "Paid search, social, and display campaigns that convert." },
+      { label: "Content & SEO", desc: "Search strategy and content that earns durable traffic." },
+      { label: "Analytics & CRO", desc: "Dashboards and experiments that optimize conversion." },
+    ],
     benefits: [
+      "Kampanye terukur yang fokus pada ROI",
+      "Analitik & pelaporan seluruh funnel",
+      "Pengujian A/B berkelanjutan",
+      "SEO, iklan & konten yang terintegrasi",
+    ],
+    benefitsEn: [
       "Measurable, ROI-focused campaigns",
       "Full-funnel analytics & reporting",
       "Continuous A/B testing",
       "Integrated SEO, ads & content",
     ],
     process: [
+      { title: "Audit", desc: "Menganalisis kanal, funnel, dan kompetitor." },
+      { title: "Strategi", desc: "Menentukan audiens, pesan, dan kanal." },
+      { title: "Peluncuran", desc: "Menjalankan kampanye dan konten dengan cepat." },
+      { title: "Optimasi", desc: "Mengukur, menguji, dan menskalakan yang berhasil." },
+    ],
+    processEn: [
       { title: "Audit", desc: "Analyze channels, funnel, and competitors." },
       { title: "Strategy", desc: "Define audiences, messaging, and channels." },
       { title: "Launch", desc: "Run campaigns and content at pace." },
@@ -548,40 +655,65 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
   },
   {
     slug: "digital-technology",
-    title: "Digital Technology",
-    tagline: "AI, data, and innovation that move you forward",
+    title: "Teknologi Digital",
+    titleEn: "Digital Technology",
+    tagline: "AI, data, dan inovasi yang membawa Anda maju",
+    taglineEn: "AI, data, and innovation that move you forward",
     icon: "Cpu",
     image: `${SVC_IMG}/digital-artificial-intelligence.webp`,
     intro:
+      "Teknologi terkini yang diterapkan dengan tujuan — mulai dari AI dan platform data hingga inovasi digital yang membuat Anda tetap unggul.",
+    introEn:
       "Emerging technology applied with purpose — from AI and data platforms to the digital innovation that keeps you ahead.",
     about: [
+      "Kami membantu bisnis mengadopsi teknologi yang menciptakan keunggulan nyata: otomatisasi cerdas, infrastruktur data, dan produk digital modern yang dibangun untuk berkembang.",
+      "Pendekatan kami pragmatis — kami fokus pada use case yang memberikan nilai terukur, lalu membangunnya secara andal dan aman.",
+    ],
+    aboutEn: [
       "We help businesses adopt technology that creates real advantage: intelligent automation, data infrastructure, and modern digital products built to scale.",
       "Our approach is pragmatic — we focus on the use cases that deliver measurable value, then build them reliably and securely.",
     ],
     offerings: [
       {
-        label: "Artificial Intelligence",
-        desc: "AI & automation for smarter, faster operations.",
+        label: "Kecerdasan Buatan",
+        desc: "AI & otomatisasi untuk operasional yang lebih cerdas dan cepat.",
         image: `${SVC_IMG}/digital-artificial-intelligence.webp`,
       },
       {
-        label: "Data Center",
-        desc: "Robust data infrastructure and analytics platforms.",
+        label: "Pusat Data",
+        desc: "Infrastruktur data dan platform analitik yang andal.",
         image: `${SVC_IMG}/digital-data-center.webp`,
       },
       {
-        label: "Digital Innovation",
-        desc: "Modern digital products and transformation programs.",
+        label: "Inovasi Digital",
+        desc: "Produk digital modern dan program transformasi.",
         image: `${SVC_IMG}/digital-innovation.webp`,
       },
     ],
+    offeringsEn: [
+      { label: "Artificial Intelligence", desc: "AI & automation for smarter, faster operations." },
+      { label: "Data Center", desc: "Robust data infrastructure and analytics platforms." },
+      { label: "Digital Innovation", desc: "Modern digital products and transformation programs." },
+    ],
     benefits: [
+      "Adopsi teknologi yang pragmatis dan mengutamakan nilai",
+      "Arsitektur yang aman & skalabel",
+      "Platform keputusan berbasis data",
+      "Fondasi yang siap menghadapi masa depan",
+    ],
+    benefitsEn: [
       "Pragmatic, value-first technology adoption",
       "Secure & scalable architecture",
       "Data-driven decision platforms",
       "Future-ready foundations",
     ],
     process: [
+      { title: "Penilaian", desc: "Mengidentifikasi peluang teknologi bernilai tinggi." },
+      { title: "Perancangan", desc: "Merancang solusi yang aman dan skalabel." },
+      { title: "Pembangunan", desc: "Mengembangkan dan mengintegrasikan secara andal." },
+      { title: "Skala", desc: "Mengoperasikan, memantau, dan meningkatkan." },
+    ],
+    processEn: [
       { title: "Assess", desc: "Identify high-value technology opportunities." },
       { title: "Design", desc: "Architect secure, scalable solutions." },
       { title: "Build", desc: "Develop and integrate reliably." },
@@ -590,40 +722,65 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
   },
   {
     slug: "it-solutions",
-    title: "IT Solutions",
-    tagline: "Reliable, secure systems built around your operations",
+    title: "Solusi IT",
+    titleEn: "IT Solutions",
+    tagline: "Sistem yang andal dan aman, dibangun mengikuti operasional Anda",
+    taglineEn: "Reliable, secure systems built around your operations",
     icon: "Server",
     image: `${SVC_IMG}/it-cloud-infrastructure.webp`,
     intro:
+      "Perangkat lunak dan infrastruktur yang skalabel — direkayasa untuk keandalan, keamanan, dan cara bisnis Anda benar-benar berjalan.",
+    introEn:
       "Scalable software and infrastructure — engineered for reliability, security, and the way your business actually runs.",
     about: [
+      "Mulai dari infrastruktur cloud hingga sistem internal kustom dan keamanan jaringan, kami memodernisasi operasional menjadi platform yang skalabel dan tetap terlindungi.",
+      "Dan kami tidak menghilang setelah peluncuran — dukungan dan pemantauan berkelanjutan menjaga semuanya berjalan lancar, 24/7.",
+    ],
+    aboutEn: [
       "From cloud infrastructure to custom internal systems and network security, we modernize operations into platforms that scale and stay protected.",
       "And we don't disappear after launch — ongoing support and monitoring keep everything running smoothly, 24/7.",
     ],
     offerings: [
       {
-        label: "Cloud Infrastructure",
-        desc: "Cloud migration, architecture, and managed hosting.",
+        label: "Infrastruktur Cloud",
+        desc: "Migrasi cloud, arsitektur, dan managed hosting.",
         image: `${SVC_IMG}/it-cloud-infrastructure.webp`,
       },
       {
-        label: "Network Operations",
-        desc: "Network design, monitoring, and security hardening.",
+        label: "Operasi Jaringan",
+        desc: "Desain jaringan, pemantauan, dan penguatan keamanan.",
         image: `${SVC_IMG}/it-network-operations.webp`,
       },
       {
-        label: "IT Support",
-        desc: "Responsive support and proactive maintenance.",
+        label: "Dukungan IT",
+        desc: "Dukungan responsif dan pemeliharaan proaktif.",
         image: `${SVC_IMG}/it-support.webp`,
       },
     ],
+    offeringsEn: [
+      { label: "Cloud Infrastructure", desc: "Cloud migration, architecture, and managed hosting." },
+      { label: "Network Operations", desc: "Network design, monitoring, and security hardening." },
+      { label: "IT Support", desc: "Responsive support and proactive maintenance." },
+    ],
     benefits: [
+      "Arsitektur cloud-native yang aman dan skalabel",
+      "Ketersediaan tinggi & pemantauan",
+      "ERP / sistem internal kustom",
+      "Dukungan berkelanjutan yang andal",
+    ],
+    benefitsEn: [
       "Secure, scalable cloud-native architecture",
       "High availability & monitoring",
       "Custom ERP / internal systems",
       "Reliable ongoing support",
     ],
     process: [
+      { title: "Penilaian", desc: "Meninjau sistem, infrastruktur, dan risiko." },
+      { title: "Perancangan", desc: "Merancang solusi yang aman dan skalabel." },
+      { title: "Implementasi", desc: "Membangun, migrasi, dan integrasi." },
+      { title: "Dukungan", desc: "Memantau dan memelihara 24/7." },
+    ],
+    processEn: [
       { title: "Assess", desc: "Review systems, infrastructure, and risks." },
       { title: "Architect", desc: "Design a secure, scalable solution." },
       { title: "Implement", desc: "Build, migrate, and integrate." },

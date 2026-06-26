@@ -3,10 +3,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { TESTIMONIALS } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { useLang } from "@/components/providers/lang-provider";
 
 export function Testimonials() {
+  const { t: tr } = useLang();
+  const TESTIMONIALS = tr.testimonials.items;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const count = TESTIMONIALS.length;
@@ -39,9 +41,9 @@ export function Testimonials() {
       />
       <div className="container-x relative">
         <SectionHeading
-          eyebrow="Testimonials"
-          title="What Our Clients Say"
-          subtitle="Trusted by businesses across industries to deliver results that matter."
+          eyebrow={tr.testimonials.eyebrow}
+          title={tr.testimonials.title}
+          subtitle={tr.testimonials.subtitle}
         />
 
         <div

@@ -23,8 +23,20 @@ export function ServiceDetailContent({
   svc: ServiceDetail;
   others: ServiceDetail[];
 }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const isEn = lang === "en";
   const Icon = ICONS[svc.icon] ?? ShieldCheck;
+
+  const title = isEn ? svc.titleEn ?? svc.title : svc.title;
+  const tagline = isEn ? svc.taglineEn ?? svc.tagline : svc.tagline;
+  const intro = isEn ? svc.introEn ?? svc.intro : svc.intro;
+  const about = isEn ? svc.aboutEn ?? svc.about : svc.about;
+  const benefits = isEn ? svc.benefitsEn ?? svc.benefits : svc.benefits;
+  const process = isEn ? svc.processEn ?? svc.process : svc.process;
+  const offerings = svc.offerings.map((o, i) => {
+    const oe = isEn ? svc.offeringsEn?.[i] : undefined;
+    return { label: oe?.label ?? o.label, desc: oe?.desc ?? o.desc, image: o.image };
+  });
 
   return (
     <>
@@ -46,24 +58,24 @@ export function ServiceDetailContent({
                 <ChevronRight size={14} />
                 <Link href="/#services" className="hover:text-gold">{t.nav.services}</Link>
                 <ChevronRight size={14} />
-                <span className="text-white">{svc.title}</span>
+                <span className="text-white">{title}</span>
               </nav>
             </Reveal>
 
             <Reveal index={1}>
               <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider backdrop-blur">
                 <Icon size={15} className="text-gold" />
-                Aetherion Service
+                {t.serviceDetail.badge}
               </span>
             </Reveal>
 
             <Reveal index={2}>
               <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.1] text-glow sm:text-5xl">
-                {svc.title}
+                {title}
               </h1>
             </Reveal>
             <Reveal index={3}>
-              <p className="mt-5 max-w-2xl text-lg text-white/80">{svc.tagline}</p>
+              <p className="mt-5 max-w-2xl text-lg text-white/80">{tagline}</p>
             </Reveal>
             <Reveal index={4}>
               <div className="mt-9 flex flex-wrap gap-4">
@@ -94,7 +106,7 @@ export function ServiceDetailContent({
               <Reveal>
                 <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure">
                   <span className="h-px w-6 bg-gold" />
-                  Overview
+                  {t.serviceDetail.overviewLabel}
                 </span>
               </Reveal>
               <Reveal index={1}>
@@ -103,9 +115,9 @@ export function ServiceDetailContent({
                 </h2>
               </Reveal>
               <Reveal index={2}>
-                <p className="mt-5 text-lg font-medium text-ink">{svc.intro}</p>
+                <p className="mt-5 text-lg font-medium text-ink">{intro}</p>
               </Reveal>
-              {svc.about.map((p, i) => (
+              {about.map((p, i) => (
                 <Reveal key={i} index={3 + i}>
                   <p className="mt-4 leading-relaxed text-ink-soft">{p}</p>
                 </Reveal>
@@ -116,7 +128,7 @@ export function ServiceDetailContent({
               <div className="rounded-[2rem] bg-surface p-8 shadow-card sm:p-10">
                 <h3 className="text-lg font-bold text-brand">{t.serviceDetail.benefitsLabel}</h3>
                 <ul className="mt-6 space-y-4">
-                  {svc.benefits.map((b) => (
+                  {benefits.map((b) => (
                     <li key={b} className="flex items-start gap-3">
                       <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
                         <Check size={14} strokeWidth={3} />
@@ -148,7 +160,7 @@ export function ServiceDetailContent({
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {svc.offerings.map((o, i) => (
+              {offerings.map((o, i) => (
                 <Reveal key={o.label} index={i}>
                   <article className="group h-full overflow-hidden rounded-2xl bg-white shadow-card transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover">
                     <div className="relative aspect-[16/10] overflow-hidden">
@@ -190,7 +202,7 @@ export function ServiceDetailContent({
             </div>
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {svc.process.map((step, i) => (
+              {process.map((step, i) => (
                 <Reveal key={step.title} index={i}>
                   <div className="relative h-full rounded-2xl border border-line bg-surface p-6">
                     <span className="text-3xl font-extrabold text-gold/40">0{i + 1}</span>
@@ -247,7 +259,7 @@ export function ServiceDetailContent({
                         <OIcon size={18} />
                       </span>
                       <span className="text-sm font-semibold text-ink group-hover:text-brand">
-                        {o.title.split("—")[0].split(",")[0].trim()}
+                        {(isEn ? o.titleEn ?? o.title : o.title).split("—")[0].split(",")[0].trim()}
                       </span>
                     </span>
                     <ArrowUpRight size={16} className="text-gold opacity-0 transition-opacity group-hover:opacity-100" />

@@ -84,7 +84,7 @@ export function ProjectDetailContent({
               <Reveal>
                 <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure">
                   <span className="h-px w-6 bg-gold" />
-                  Overview
+                  {t.portfolio.overviewLabel}
                 </span>
               </Reveal>
               <Reveal index={1}>

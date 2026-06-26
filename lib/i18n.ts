@@ -67,6 +67,34 @@ const en = {
     subtitle: "Empowering Business Growth Through Innovation and Technology.",
     viewAll: "View All Projects",
   },
+  testimonials: {
+    eyebrow: "Testimonials",
+    title: "What Our Clients Say",
+    subtitle: "Trusted by businesses across industries to deliver results that matter.",
+    items: [
+      {
+        quote:
+          "Aetherion's audit team brought a level of rigor and clarity we hadn't seen before. Their report became a roadmap for better decisions.",
+        name: "Andika Pratama",
+        role: "CFO, Nusantara Manufacturing",
+      },
+      {
+        quote:
+          "From branding to our digital campaigns, the results spoke for themselves — a 3x increase in qualified leads within two quarters.",
+        name: "Sarah Wijaya",
+        role: "Marketing Director, Lumina Retail",
+      },
+      {
+        quote:
+          "They rebuilt our internal systems end to end. Reliable, secure, and delivered exactly on schedule. A true long-term partner.",
+        name: "Reza Maulana",
+        role: "COO, Sigma Logistics",
+      },
+    ],
+  },
+  megaMenu: {
+    explore: "Explore",
+  },
   contact: {
     eyebrow: "Get in Touch",
     heading: ["Let's Build Something", "Great Together"],
@@ -97,6 +125,7 @@ const en = {
   },
   portfolio: {
     eyebrow: "Our Work",
+    overviewLabel: "Overview",
     backLabel: "Back to Portfolio",
     scopeLabel: "Project Scope",
     resultLabel: "Results",
@@ -111,6 +140,8 @@ const en = {
   },
   serviceDetail: {
     backLabel: "Back to Services",
+    overviewLabel: "Overview",
+    badge: "Aetherion Service",
     benefitsLabel: "Why Choose This Service",
     processLabel: "Our Process",
     offeringsLabel: "What We Offer",
@@ -189,6 +220,34 @@ const id: typeof en = {
     subtitle: "Memberdayakan Pertumbuhan Bisnis Melalui Inovasi dan Teknologi.",
     viewAll: "Lihat Semua Proyek",
   },
+  testimonials: {
+    eyebrow: "Testimoni",
+    title: "Apa Kata Klien Kami",
+    subtitle: "Dipercaya oleh berbagai bisnis lintas industri untuk memberikan hasil yang nyata.",
+    items: [
+      {
+        quote:
+          "Tim audit Aetherion menghadirkan ketelitian dan kejelasan yang belum pernah kami temui sebelumnya. Laporan mereka menjadi pedoman untuk keputusan yang lebih baik.",
+        name: "Andika Pratama",
+        role: "CFO, Nusantara Manufacturing",
+      },
+      {
+        quote:
+          "Mulai dari branding hingga kampanye digital kami, hasilnya berbicara sendiri — peningkatan 3x lipat leads berkualitas dalam dua kuartal.",
+        name: "Sarah Wijaya",
+        role: "Marketing Director, Lumina Retail",
+      },
+      {
+        quote:
+          "Mereka membangun ulang seluruh sistem internal kami dari awal hingga akhir. Andal, aman, dan selesai tepat waktu. Mitra jangka panjang yang sesungguhnya.",
+        name: "Reza Maulana",
+        role: "COO, Sigma Logistics",
+      },
+    ],
+  },
+  megaMenu: {
+    explore: "Jelajahi",
+  },
   contact: {
     eyebrow: "Hubungi Kami",
     heading: ["Mari Bangun Sesuatu", "yang Luar Biasa Bersama"],
@@ -219,6 +278,7 @@ const id: typeof en = {
   },
   portfolio: {
     eyebrow: "Karya Kami",
+    overviewLabel: "Ikhtisar",
     backLabel: "Kembali ke Portofolio",
     scopeLabel: "Ruang Lingkup Proyek",
     resultLabel: "Hasil",
@@ -233,6 +293,8 @@ const id: typeof en = {
   },
   serviceDetail: {
     backLabel: "Kembali ke Layanan",
+    overviewLabel: "Ikhtisar",
+    badge: "Layanan Aetherion",
     benefitsLabel: "Mengapa Memilih Layanan Ini",
     processLabel: "Proses Kami",
     offeringsLabel: "Apa yang Kami Tawarkan",
