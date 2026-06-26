@@ -3,8 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
 import { asset } from "@/lib/asset";
 import { HeroIllustration } from "@/components/ui/hero-illustration";
 import { ParticleField } from "@/components/ui/particle-field";
@@ -66,33 +64,6 @@ export function Hero() {
   const lineV = isMobile ? lineMobile : lineDesktop;
   const currentFadeV = isMobile ? fadeMobileV : fadeV;
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: root.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
-
-        tl.to(".hero-title", { scale: 2.1, yPercent: -10, opacity: 0, ease: "power2.in" }, 0)
-          .to(".hero-sub", { yPercent: -40, opacity: 0, ease: "power2.in" }, 0)
-          .to(".hero-cta", { yPercent: -60, opacity: 0, ease: "power2.in" }, 0)
-          .to(".hero-illu", { scale: 2.9, opacity: 0, ease: "power2.in" }, 0)
-          .to(".hero-media", { scale: 1.4, yPercent: 14, ease: "none" }, 0)
-          .to(".hero-gradient", { scale: 1.35, ease: "none" }, 0)
-          .to(".hero-grid", { scale: 1.6, opacity: 0, ease: "none" }, 0)
-          .to(".hero-particles", { scale: 2, opacity: 0.15, ease: "none" }, 0);
-      });
-      return () => mm.revert();
-    },
-    { scope: root }
-  );
-
   return (
     <section
       id="home"
@@ -117,7 +88,7 @@ export function Hero() {
       <div className="animate-glow pointer-events-none absolute -left-20 bottom-0 hidden h-80 w-80 rounded-full bg-gold/20 blur-[120px] md:block" />
 
       <div className="hero-particles layer absolute inset-0 hidden md:block">
-        <ParticleField count={24} color="bg-gold/60" />
+        <ParticleField count={12} color="bg-gold/60" />
       </div>
 
       <div className="container-x relative z-10 grid items-center gap-12 lg:grid-cols-2">
