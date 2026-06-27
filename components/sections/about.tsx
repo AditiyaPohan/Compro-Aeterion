@@ -93,7 +93,7 @@ export function About() {
 
         <div className="container-x relative grid items-stretch gap-12 lg:grid-cols-2">
           {/* Left: logo card + counters */}
-          <div className="about-card preserve-3d flex flex-col justify-center">
+          <div className="about-card preserve-3d flex flex-col justify-start">
             <div className="relative mx-auto max-w-md rounded-[2rem] bg-white p-10 shadow-card">
               <div className="absolute inset-x-0 -top-px mx-auto h-1 w-24 rounded-full bg-gold" />
               <div className="flex flex-col items-center text-center">
