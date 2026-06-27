@@ -155,7 +155,7 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={sent}
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_18px_40px_-14px_rgba(212,175,55,0.9)] transition-colors duration-300 hover:bg-[#c79f2c] disabled:opacity-90"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#b8901f] px-7 py-3.5 text-sm font-semibold text-ink transition-colors duration-300 hover:bg-gold disabled:opacity-90"
                 >
                   {sent ? (
                     <>

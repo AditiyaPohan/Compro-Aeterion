@@ -91,9 +91,9 @@ export function About() {
         <div className="about-deco pointer-events-none absolute left-8 top-16 hidden h-32 w-32 rounded-3xl border border-azure/15 lg:block" />
         <div className="about-deco pointer-events-none absolute right-10 bottom-16 hidden h-24 w-24 rounded-full border border-gold/25 lg:block" />
 
-        <div className="container-x relative grid items-center gap-12 lg:grid-cols-2">
+        <div className="container-x relative grid items-stretch gap-12 lg:grid-cols-2">
           {/* Left: logo card + counters */}
-          <div className="about-card preserve-3d">
+          <div className="about-card preserve-3d flex flex-col justify-center">
             <div className="relative mx-auto max-w-md rounded-[2rem] bg-white p-10 shadow-card">
               <div className="absolute inset-x-0 -top-px mx-auto h-1 w-24 rounded-full bg-gold" />
               <div className="flex flex-col items-center text-center">
@@ -127,7 +127,7 @@ export function About() {
           </div>
 
           {/* Right: progressive story */}
-          <div>
+          <div className="flex flex-col justify-center">
             <h2 className="about-head text-3xl font-extrabold leading-tight text-brand sm:text-4xl">
               <span className="block overflow-hidden">
                 <span className="line block">{t.about.heading[0]}</span>

@@ -171,13 +171,6 @@ export function Hero() {
           <HeroIllustration />
         </motion.div>
       </div>
-
-      {/* scroll cue */}
-      <div className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 lg:block">
-        <div className="flex h-9 w-5 items-start justify-center rounded-full border border-white/40 p-1">
-          <span className="h-2 w-1 rounded-full bg-gold" />
-        </div>
-      </div>
     </section>
   );
 }
