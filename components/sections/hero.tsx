@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { asset } from "@/lib/asset";
-import { HeroIllustration } from "@/components/ui/hero-illustration";
 import { Magnetic } from "@/components/interactions/magnetic";
 import { useLoading } from "@/components/providers/app-shell";
 import { useLang } from "@/components/providers/lang-provider";
@@ -86,7 +85,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -right-24 top-1/4 hidden h-[28rem] w-[28rem] rounded-full bg-azure/30 blur-[130px] md:block" />
       <div className="pointer-events-none absolute -left-20 bottom-0 hidden h-80 w-80 rounded-full bg-gold/15 blur-[120px] md:block" />
 
-      <div className="container-x relative z-10 grid items-center gap-12 lg:grid-cols-2">
+      <div className="container-x relative z-10 flex items-center">
         <div>
           <motion.span
             variants={currentFadeV}
@@ -161,15 +160,6 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          variants={currentFadeV}
-          custom={1}
-          initial="hidden"
-          animate={anim}
-          className="hero-illu relative hidden lg:block"
-        >
-          <HeroIllustration />
-        </motion.div>
       </div>
     </section>
   );
