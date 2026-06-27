@@ -44,12 +44,6 @@
     -webkit-text-size-adjust: 100%;
   }
 
-  /* Lenis menonaktifkan smooth bawaan; biar tidak dobel */
-  html.lenis,
-  html.lenis body {
-    height: auto;
-  }
-
   body {
     background: #ffffff;
     color: var(--color-ink);
@@ -157,99 +151,30 @@
   }
 }
 
-/* Float animation untuk elemen dekoratif */
-@keyframes float-y {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-18px);
-  }
-}
-
-.animate-float {
-  animation: float-y 7s ease-in-out infinite;
-}
-
-.animate-float-slow {
-  animation: float-y 11s ease-in-out infinite;
-}
-
-/* Animated gradient background (hero / contact) */
-@keyframes gradient-pan {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+/* Animasi latar kontinu (float / gradient-pan / glow-pulse / spin) sudah
+   dihapus demi performa. Class di bawah dipertahankan sebagai no-op agar
+   markup yang masih memakainya tetap tampil statis (tanpa repaint terus-
+   menerus). Hanya menyisakan style dasar yang aman. */
+.animate-float,
+.animate-float-slow,
+.animate-spin-slow {
+  animation: none;
 }
 
 .animate-gradient {
-  background-size: 220% 220%;
-  animation: gradient-pan 16s ease infinite;
-}
-
-/* Glow pulse — opacity only (no transform on blurred layers = no per-frame
-   re-rasterization of the blur; keeps the visual pulse, kills the jank). */
-@keyframes glow-pulse {
-
-  0%,
-  100% {
-    opacity: 0.45;
-  }
-
-  50% {
-    opacity: 0.85;
-  }
+  /* gradient statis, tidak bergeser */
+  background-size: 100% 100%;
+  animation: none;
 }
 
 .animate-glow {
-  animation: glow-pulse 6s ease-in-out infinite;
-}
-
-/* Slow continuous spin (orbits / rings) */
-@keyframes spin-slow {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 40s linear infinite;
+  /* glow tetap terlihat namun tidak berdenyut */
+  opacity: 0.6;
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-
-  .animate-float,
-  .animate-float-slow,
-  .animate-gradient,
-  .animate-glow,
-  .animate-spin-slow {
-    animation: none;
-  }
-
   html {
     scroll-behavior: auto;
-  }
-}
-
-/* Mobile: matikan animasi kontinu yang berat (repaint terus-menerus) demi performa */
-@media (max-width: 767px) {
-
-  .animate-float,
-  .animate-float-slow,
-  .animate-gradient,
-  .animate-glow,
-  .animate-spin-slow {
-    animation: none;
   }
 }

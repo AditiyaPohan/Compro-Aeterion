@@ -1,6 +1,5 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { ScrollEffects } from "@/components/providers/scroll-effects";
 import { Hero } from "@/components/sections/hero";
 import { Services } from "@/components/sections/services";
 import { About } from "@/components/sections/about";
@@ -12,7 +11,6 @@ import { Contact } from "@/components/sections/contact";
 export default function HomePage() {
   return (
     <>
-      <ScrollEffects />
       <Header />
       <main>
         <Hero />

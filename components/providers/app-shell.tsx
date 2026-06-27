@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import Lenis from "lenis";
 import { ScrollTrigger } from "@/lib/gsap";
 import { Preloader } from "./preloader";
 import { LangProvider } from "./lang-provider";
@@ -11,44 +10,20 @@ const LoadingContext = createContext<{ ready: boolean }>({ ready: false });
 export const useLoading = () => useContext(LoadingContext);
 
 /**
- * Shell global: preloader → kunci scroll → Lenis (smooth + sinkron ScrollTrigger)
- * → buka kunci & refresh saat "ready". Menyediakan state `ready` ke hero dll.
+ * Shell global: preloader → kunci scroll selama preload → buka kunci & refresh
+ * ScrollTrigger saat "ready". Menyediakan state `ready` ke hero dll.
+ *
+ * Smooth-scroll Lenis (momentum/parallax) sudah dihapus demi performa — kini
+ * memakai scroll native browser (jauh lebih ringan). Klik anchor `#id` tetap
+ * mulus lewat `scrollIntoView({ behavior: "smooth" })`.
  */
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
-  const lenisRef = useRef<Lenis | null>(null);
   const pathname = usePathname();
 
-  // Lenis + anchor links
+  // Smooth-scroll untuk anchor links (#id) — native, tanpa library.
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
-
-    // Lewati smooth-scroll di perangkat lemah → mereka pakai scroll native yang
-    // jauh lebih ringan. (deviceMemory & jumlah core sebagai indikator kasar.)
-    const nav = navigator as Navigator & { deviceMemory?: number };
-    const lowEnd =
-      (nav.deviceMemory != null && nav.deviceMemory <= 4) ||
-      (nav.hardwareConcurrency != null && nav.hardwareConcurrency <= 4);
-    if (lowEnd) return;
-
-    const lenis = new Lenis({
-      lerp: 0.1,
-      wheelMultiplier: 1,
-      smoothWheel: true,
-      syncTouch: false,
-    });
-    lenisRef.current = lenis;
-    lenis.on("scroll", ScrollTrigger.update);
-    lenis.stop(); // dikunci sampai preloader selesai
     window.scrollTo(0, 0);
-
-    let rafId = 0;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
 
     const onClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest<HTMLAnchorElement>(
@@ -60,17 +35,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       const el = document.querySelector(id);
       if (el) {
         e.preventDefault();
-        lenis.scrollTo(el as HTMLElement, { offset: -80 });
+        const reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+        const top =
+          (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: reduce ? "auto" : "smooth" });
       }
     };
     document.addEventListener("click", onClick);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      document.removeEventListener("click", onClick);
-      lenis.destroy();
-      lenisRef.current = null;
-    };
+    return () => document.removeEventListener("click", onClick);
   }, []);
 
   // Kunci scroll body selama preload
@@ -81,19 +55,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [ready]);
 
-  // Saat preloader selesai → jalankan Lenis & hitung ulang ScrollTrigger
+  // Saat preloader selesai → hitung ulang ScrollTrigger
   useEffect(() => {
     if (!ready) return;
-    lenisRef.current?.start();
     const id = requestAnimationFrame(() => ScrollTrigger.refresh());
     return () => cancelAnimationFrame(id);
   }, [ready]);
 
   // Pindah halaman (client nav) → ke atas + recalc ScrollTrigger
   useEffect(() => {
-    const lenis = lenisRef.current;
-    if (lenis) lenis.scrollTo(0, { immediate: true });
-    else window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     const id = requestAnimationFrame(() => ScrollTrigger.refresh());
     return () => cancelAnimationFrame(id);
   }, [pathname]);

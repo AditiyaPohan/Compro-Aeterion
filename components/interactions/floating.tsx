@@ -1,18 +1,14 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Floating — gerak naik-turun + sedikit goyang terus-menerus (icon/dekor).
+ * Floating — sebelumnya gerak naik-turun + goyang terus-menerus (framer-motion,
+ * loop tak-berujung). Dimatikan demi performa: kini hanya wadah statis. Props
+ * animasi (amplitude/duration/delay/rotate) dipertahankan agar pemanggilan lama
+ * tetap valid, tapi tidak lagi menganimasi apa pun.
  */
 export function Floating({
   children,
   className,
-  amplitude = 12,
-  duration = 5,
-  delay = 0,
-  rotate = 3,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -21,13 +17,5 @@ export function Floating({
   delay?: number;
   rotate?: number;
 }) {
-  return (
-    <motion.div
-      className={cn(className)}
-      animate={{ y: [0, -amplitude, 0], rotate: [0, rotate, 0, -rotate, 0] }}
-      transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={cn(className)}>{children}</div>;
 }

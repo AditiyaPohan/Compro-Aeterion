@@ -1,15 +1,12 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 /**
- * Ilustrasi korporat untuk hero — kartu dashboard melayang + orbit ring brand.
- * Murni SVG / CSS, tanpa aset eksternal.
+ * Ilustrasi korporat untuk hero — kartu dashboard + orbit ring brand.
+ * Murni SVG / CSS, tanpa aset eksternal. Animasi kontinu (rotasi ring &
+ * floating cards) dihapus demi performa; ilustrasi kini statis.
  */
 export function HeroIllustration() {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[480px]">
-      {/* Orbit rings */}
+      {/* Orbit rings (statis) */}
       <svg
         viewBox="0 0 400 400"
         className="absolute inset-0 h-full w-full"
@@ -21,7 +18,7 @@ export function HeroIllustration() {
             <stop offset="100%" stopColor="#ffffff" stopOpacity="0.05" />
           </linearGradient>
         </defs>
-        <motion.circle
+        <circle
           cx="200"
           cy="200"
           r="170"
@@ -29,11 +26,8 @@ export function HeroIllustration() {
           stroke="url(#ringA)"
           strokeWidth="1.5"
           strokeDasharray="6 10"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: "200px 200px" }}
         />
-        <motion.circle
+        <circle
           cx="200"
           cy="200"
           r="130"
@@ -41,18 +35,13 @@ export function HeroIllustration() {
           stroke="#d4af37"
           strokeOpacity="0.45"
           strokeWidth="1.5"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: "200px 200px" }}
         />
       </svg>
 
       {/* Center quatrefoil mark */}
-      <motion.svg
+      <svg
         viewBox="0 0 100 100"
         className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 drop-shadow-2xl"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden="true"
       >
         <g fill="none" strokeWidth="7" strokeLinecap="round">
@@ -61,14 +50,10 @@ export function HeroIllustration() {
           <circle cx="50" cy="33" r="19" stroke="#ffffff" />
           <circle cx="50" cy="67" r="19" stroke="#bcdcff" />
         </g>
-      </motion.svg>
+      </svg>
 
-      {/* Floating stat card top-left */}
-      <motion.div
-        className="absolute left-0 top-6 w-44 rounded-2xl bg-white/95 p-4 shadow-2xl backdrop-blur"
-        animate={{ y: [0, -14, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      >
+      {/* Stat card top-left */}
+      <div className="absolute left-0 top-6 w-44 rounded-2xl bg-white/95 p-4 shadow-2xl backdrop-blur">
         <p className="text-[10px] font-semibold uppercase tracking-wider text-ink-soft">
           Growth
         </p>
@@ -83,14 +68,10 @@ export function HeroIllustration() {
             strokeLinejoin="round"
           />
         </svg>
-      </motion.div>
+      </div>
 
-      {/* Floating badge bottom-right */}
-      <motion.div
-        className="absolute bottom-8 right-0 flex items-center gap-3 rounded-2xl bg-white/95 p-3.5 shadow-2xl backdrop-blur"
-        animate={{ y: [0, 14, 0] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-      >
+      {/* Badge bottom-right */}
+      <div className="absolute bottom-8 right-0 flex items-center gap-3 rounded-2xl bg-white/95 p-3.5 shadow-2xl backdrop-blur">
         <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/15 text-lg">
           🛡️
         </span>
@@ -98,16 +79,12 @@ export function HeroIllustration() {
           <p className="text-sm font-bold text-ink">ISO Certified</p>
           <p className="text-[11px] text-ink-soft">Assurance Quality</p>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Floating pill bottom-left */}
-      <motion.div
-        className="absolute bottom-24 left-2 rounded-full bg-azure px-4 py-2 text-xs font-semibold text-white shadow-xl"
-        animate={{ x: [0, 8, 0], y: [0, -6, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
+      {/* Pill bottom-left */}
+      <div className="absolute bottom-24 left-2 rounded-full bg-azure px-4 py-2 text-xs font-semibold text-white shadow-xl">
         12+ Years Experience
-      </motion.div>
+      </div>
     </div>
   );
 }

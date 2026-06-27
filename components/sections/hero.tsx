@@ -5,7 +5,6 @@ import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { asset } from "@/lib/asset";
 import { HeroIllustration } from "@/components/ui/hero-illustration";
-import { ParticleField } from "@/components/ui/particle-field";
 import { Magnetic } from "@/components/interactions/magnetic";
 import { useLoading } from "@/components/providers/app-shell";
 import { useLang } from "@/components/providers/lang-provider";
@@ -70,7 +69,7 @@ export function Hero() {
       ref={root}
       className="scene relative flex h-screen items-center overflow-hidden bg-brand-deep"
     >
-      <div className="hero-gradient layer absolute inset-[-15%] animate-gradient bg-[linear-gradient(125deg,#16447f_0%,#1e5aa8_40%,#2f7de1_70%,#16447f_100%)]" />
+      <div className="hero-gradient layer absolute inset-[-15%] bg-[linear-gradient(125deg,#16447f_0%,#1e5aa8_40%,#2f7de1_70%,#16447f_100%)]" />
       <div
         className="hero-media layer absolute inset-0 bg-cover bg-center [background-image:var(--hero-bg-mobile)] md:[background-image:var(--hero-bg-desktop)]"
         style={
@@ -83,13 +82,9 @@ export function Hero() {
       <div className="hero-overlay layer absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-brand-deep/75" />
       <div className="hero-grid layer bg-grid absolute inset-0 opacity-30" />
 
-      {/* Glow blobs — desktop only, avoid GPU blur cost on mobile */}
-      <div className="animate-glow pointer-events-none absolute -right-24 top-1/4 hidden h-[28rem] w-[28rem] rounded-full bg-azure/40 blur-[130px] md:block" />
-      <div className="animate-glow pointer-events-none absolute -left-20 bottom-0 hidden h-80 w-80 rounded-full bg-gold/20 blur-[120px] md:block" />
-
-      <div className="hero-particles layer absolute inset-0 hidden md:block">
-        <ParticleField count={12} color="bg-gold/60" />
-      </div>
+      {/* Glow blobs statis — desktop only, hindari biaya blur GPU di mobile */}
+      <div className="pointer-events-none absolute -right-24 top-1/4 hidden h-[28rem] w-[28rem] rounded-full bg-azure/30 blur-[130px] md:block" />
+      <div className="pointer-events-none absolute -left-20 bottom-0 hidden h-80 w-80 rounded-full bg-gold/15 blur-[120px] md:block" />
 
       <div className="container-x relative z-10 grid items-center gap-12 lg:grid-cols-2">
         <div>
@@ -180,11 +175,7 @@ export function Hero() {
       {/* scroll cue */}
       <div className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 lg:block">
         <div className="flex h-9 w-5 items-start justify-center rounded-full border border-white/40 p-1">
-          <motion.span
-            className="h-2 w-1 rounded-full bg-gold"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <span className="h-2 w-1 rounded-full bg-gold" />
         </div>
       </div>
     </section>
