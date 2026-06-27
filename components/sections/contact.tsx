@@ -8,7 +8,6 @@ import { gsap } from "@/lib/gsap";
 import { SITE } from "@/lib/data";
 import { asset } from "@/lib/asset";
 import { ParticleField } from "@/components/ui/particle-field";
-import { Magnetic } from "@/components/interactions/magnetic";
 import { useLang } from "@/components/providers/lang-provider";
 
 export function Contact() {
@@ -116,7 +115,7 @@ export function Contact() {
             </ul>
           </div>
 
-          <div className="contact-card preserve-3d rounded-[2rem] border border-white/15 bg-white/10 p-8 shadow-2xl backdrop-blur-none sm:p-10 md:bg-white/[0.06] md:backdrop-blur-xl">
+          <div className="contact-card preserve-3d rounded-[2rem] border border-white/25 bg-white/15 p-8 shadow-2xl backdrop-blur-none sm:p-10 md:bg-white/[0.12] md:backdrop-blur-xl">
             <form onSubmit={onSubmit} className="space-y-5">
               {[
                 { name: "name", label: t.contact.fields.name, type: "text", placeholder: t.contact.fields.namePlaceholder, required: true },
@@ -151,24 +150,22 @@ export function Contact() {
                 />
               </div>
 
-              <Magnetic strength={0.35} className="w-full">
-                <button
-                  type="submit"
-                  disabled={sent}
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#b8901f] px-7 py-3.5 text-sm font-semibold text-ink transition-colors duration-300 hover:bg-gold disabled:opacity-90"
-                >
-                  {sent ? (
-                    <>
-                      <CheckCircle2 size={18} /> {t.contact.sent}
-                    </>
-                  ) : (
-                    <>
-                      {t.contact.send}
-                      <Send size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-                    </>
-                  )}
-                </button>
-              </Magnetic>
+              <button
+                type="submit"
+                disabled={sent}
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#b8901f] px-7 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:bg-gold hover:shadow-[0_0_28px_6px_rgba(212,175,55,0.45),0_0_60px_20px_rgba(212,175,55,0.18)] disabled:opacity-90"
+              >
+                {sent ? (
+                  <>
+                    <CheckCircle2 size={18} /> {t.contact.sent}
+                  </>
+                ) : (
+                  <>
+                    {t.contact.send}
+                    <Send size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  </>
+                )}
+              </button>
             </form>
           </div>
         </div>
